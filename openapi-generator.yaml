@@ -1,0 +1,7 @@
+# Options for openapi-generator's dart-dio generator (`make api`). The
+# generator version is pinned in openapitools.json.
+pubName: maki_api_client
+pubDescription: Maki API client generated from maki-be/api/openapi.yaml. Never edit by hand.
+pubAuthor: Kervzent
+# This stack uses json_serializable; the generator's default is built_value.
+serializationLibrary: json_serializable

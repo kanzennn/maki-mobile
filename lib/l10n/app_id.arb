@@ -1,0 +1,713 @@
+{
+  "@@locale": "id",
+  "appName": "Maki",
+  "@appName": {
+    "description": "App name in the task switcher and title."
+  },
+  "loginTitle": "Masuk",
+  "loginSubtitle": "Masuk dengan username dan password Anda.",
+  "usernameLabel": "Username",
+  "passwordLabel": "Password",
+  "loginSubmit": "Masuk",
+  "loginForgotHint": "Lupa password? Minta Manager atau Owner mereset password Anda.",
+  "loginDeviceRevoked": "Perangkat ini sudah dicabut dari kasir outlet, jadi Anda dikeluarkan. Untuk memakainya lagi, Manager masuk di perangkat ini lalu mengaktifkannya sebagai perangkat baru.",
+  "@loginDeviceRevoked": {
+    "description": "On the sign-in screen, after the app signed the user out because the outlet revoked this phone."
+  },
+  "validationRequired": "Wajib diisi.",
+  "validationMinLength": "Minimal {min} karakter.",
+  "@validationMinLength": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "validationMaxLength": "Maksimal {max} karakter.",
+  "@validationMaxLength": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationMismatch": "Password tidak sama.",
+  "changePasswordTitle": "Ganti password",
+  "changePasswordRequired": "Password Anda dibuat oleh orang lain. Buat password Anda sendiri sebelum melanjutkan.",
+  "currentPasswordLabel": "Password saat ini",
+  "newPasswordLabel": "Password baru",
+  "confirmPasswordLabel": "Ulangi password baru",
+  "changePasswordSubmit": "Simpan password",
+  "changePasswordDone": "Password sudah diganti. Perangkat lain yang masuk dengan akun ini sudah dikeluarkan.",
+  "signOut": "Keluar",
+  "navCashier": "Kasir",
+  "@navCashier": {
+    "description": "Bottom navigation and rail: the sell screen."
+  },
+  "navHistory": "Riwayat",
+  "@navHistory": {
+    "description": "Bottom navigation and rail: today's orders."
+  },
+  "navAccount": "Akun",
+  "@navAccount": {
+    "description": "Bottom navigation and rail: who is signed in, this device, sign-out."
+  },
+  "posMenuHeading": "Pilih menu",
+  "posDevice": "{code} · {name}",
+  "@posDevice": {
+    "description": "This phone as one of the outlet's devices: its code and name.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "posSearchLabel": "Cari menu",
+  "posClearSearch": "Hapus pencarian",
+  "posCategories": "Kategori",
+  "posAllMenus": "Semua menu",
+  "posCategoryItems": "{count} item",
+  "@posCategoryItems": {
+    "description": "Under a category tile: how many of its menus are on sale.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "posStockAvailable": "Tersedia {count}",
+  "@posStockAvailable": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "posStockAlways": "Selalu tersedia",
+  "posStockOut": "Habis",
+  "posStockLow": "Stok menipis",
+  "posInCart": "{count} di pesanan",
+  "@posInCart": {
+    "description": "On a menu card: how many of it the order holds.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "posMenusNone": "Belum ada menu yang dijual. Manager menambahkannya di halaman Menu di web admin.",
+  "posMenusNoMatch": "Tidak ada menu yang cocok.",
+  "posLoadFailed": "Menu kasir tidak bisa dimuat.",
+  "cartTitle": "Detail Items",
+  "@cartTitle": {
+    "description": "DESIGN.md's name for the order panel."
+  },
+  "cartItems": "{count} item",
+  "@cartItems": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "cartEmpty": "Belum ada pesanan. Pilih menu untuk mulai.",
+  "cartType": "Tipe pesanan",
+  "orderTypeDineIn": "Dine-in",
+  "orderTypeTakeaway": "Takeaway",
+  "cartLess": "Kurangi {name}",
+  "@cartLess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cartMore": "Tambah {name}",
+  "@cartMore": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cartRemove": "Hapus {name}",
+  "@cartRemove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cartNote": "Catatan",
+  "cartNoteFor": "Catatan untuk {name}",
+  "@cartNoteFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cartNoteHint": "Misalnya less sugar",
+  "cartLine": "{qty} × {price}",
+  "@cartLine": {
+    "description": "A cart line's quantity and unit price.",
+    "placeholders": {
+      "qty": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "cartStockLeft": "Sisa stok {count}",
+  "@cartStockLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "summaryItems": "Item",
+  "summarySubtotal": "Subtotal",
+  "summaryDiscount": "Potongan",
+  "summaryService": "Service ({rate})",
+  "@summaryService": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryTax": "Pajak ({rate})",
+  "@summaryTax": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryTotal": "Total",
+  "cartMethod": "Metode bayar",
+  "methodCash": "Tunai",
+  "methodQris": "QRIS",
+  "methodDebit": "Debit",
+  "cartSoon": "Segera hadir",
+  "cartPay": "Bayar {total}",
+  "@cartPay": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "cartView": "Lihat pesanan",
+  "cartLocked": "Transaksi sebelumnya belum terjawab. Selesaikan dulu sebelum mengubah pesanan.",
+  "cartTooMuch": "Total pesanan paling banyak {amount}.",
+  "@cartTooMuch": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartNoCash": "Outlet ini sedang tidak menerima tunai.",
+  "payTitle": "Bayar tunai",
+  "payTotal": "Total",
+  "payReceived": "Uang diterima",
+  "payQuick": "Nominal cepat",
+  "payExact": "Uang pas",
+  "payChange": "Kembalian",
+  "payShort": "Kurang {amount}",
+  "@payShort": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "payConfirm": "Bayar",
+  "paySending": "Menyimpan…",
+  "payUnknown": "Server belum menjawab, jadi transaksi ini mungkin sudah tersimpan. Kirim ulang: transaksi yang sama tidak akan tercatat dua kali.",
+  "payResend": "Kirim ulang",
+  "payAbandon": "Batalkan transaksi ini",
+  "payAbandonWarning": "Pesanan bisa diubah lagi. Periksa Riwayat sebelum menagih lagi: transaksi ini mungkin sudah tersimpan.",
+  "cancel": "Batal",
+  "close": "Tutup",
+  "retry": "Coba lagi",
+  "errorRequestId": "Kode referensi: {id}",
+  "@errorRequestId": {
+    "description": "Under a failure: the request ID to quote to support.",
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "changedPrices": "Harga {names} berubah.",
+  "@changedPrices": {
+    "description": "names: menus, listed as the language lists them.",
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "changedUnavailable": "{names} tidak dijual lagi, jadi dihapus dari pesanan.",
+  "@changedUnavailable": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "changedStock": "Stok {names} tidak cukup lagi, jadi jumlahnya disesuaikan.",
+  "@changedStock": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTotal": "Pajak, service charge, atau syarat voucher berubah.",
+  "changedMethod": "Metode bayar ini tidak tersedia.",
+  "changedCheck": "Periksa pesanan dan totalnya, lalu tagih lagi.",
+  "changedClock": "Jam HP ini tidak sesuai. Periksa tanggal dan jam di pengaturan HP, lalu tagih lagi.",
+  "listAnd": "{first} dan {last}",
+  "@listAnd": {
+    "description": "The last two names of a list: Kopi dan Teh.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "last": {
+        "type": "String"
+      }
+    }
+  },
+  "doneTitle": "Transaksi tersimpan",
+  "doneChange": "Kembalian {amount}",
+  "@doneChange": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "doneNew": "Transaksi baru",
+  "receiptLabel": "Struk {number}",
+  "@receiptLabel": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "receiptNumber": "No. struk",
+  "receiptDate": "Waktu",
+  "receiptCashier": "Kasir",
+  "receiptType": "Tipe",
+  "receiptService": "Service {rate}",
+  "@receiptService": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "receiptTax": "Pajak {rate}",
+  "@receiptTax": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "receiptChange": "Kembalian",
+  "receiptVoid": "VOID",
+  "receiptVoidReason": "Alasan: {reason}",
+  "@receiptVoidReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "receiptThanks": "Terima kasih",
+  "deviceNotRegisteredTitle": "Perangkat ini belum terdaftar",
+  "deviceNotRegisteredBody": "Kasir hanya bisa dipakai di perangkat yang sudah diaktifkan untuk {outlet}. Minta Manager masuk di HP ini untuk mengaktifkannya.",
+  "@deviceNotRegisteredBody": {
+    "placeholders": {
+      "outlet": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceNotRegisteredManager": "Beri nama HP ini, lalu aktifkan sebagai kasir {outlet}. Kodenya dipakai di setiap nomor struk dari HP ini.",
+  "@deviceNotRegisteredManager": {
+    "placeholders": {
+      "outlet": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceName": "Nama perangkat",
+  "deviceNameHint": "Misalnya Kasir depan. Paling banyak 50 karakter.",
+  "deviceActivate": "Aktifkan perangkat ini",
+  "deviceActivating": "Mengaktifkan…",
+  "deviceCheckFailed": "Perangkat ini tidak bisa diperiksa.",
+  "historyTitle": "Riwayat hari ini",
+  "historySearch": "Cari nomor struk",
+  "historySearchHint": "Misalnya 0012",
+  "historyPaid": "Lunas",
+  "historyVoid": "Void",
+  "historyEmpty": "Belum ada transaksi hari ini.",
+  "historyNoMatch": "Tidak ada transaksi hari ini dengan nomor itu.",
+  "historyItems": "{count} item",
+  "@historyItems": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "historyMore": "Muat lebih banyak",
+  "historyLoadFailed": "Riwayat tidak bisa dimuat.",
+  "orderTitle": "Detail transaksi",
+  "orderLoadFailed": "Transaksi ini tidak bisa dimuat.",
+  "voidAction": "Void transaksi",
+  "voidTitle": "Void transaksi {number}?",
+  "@voidTitle": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "voidBody": "Transaksi dan pembayarannya dibatalkan, dan stoknya kembali. Tidak bisa diurungkan.",
+  "voidReason": "Alasan",
+  "voidReasonHint": "Wajib, paling banyak 200 karakter.",
+  "voidConfirm": "Void",
+  "voidDone": "Transaksi {number} sudah di-void.",
+  "@voidDone": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "accountTitle": "Akun",
+  "accountSignedIn": "Masuk sebagai",
+  "accountOutlet": "Outlet",
+  "accountDevice": "Perangkat ini",
+  "accountDeviceNone": "Belum diaktifkan sebagai kasir",
+  "accountToday": "Hari ini di outlet",
+  "signOutConfirmTitle": "Keluar dari kasir?",
+  "signOutConfirmBody": "Pesanan yang sedang dibuat akan hilang.",
+  "apiErrorForbidden": "Anda tidak punya izin untuk melakukan ini.",
+  "apiErrorOutletNotFound": "Outlet ini tidak ada, atau Anda tidak punya akses ke outlet ini.",
+  "apiErrorOutletInactive": "Outlet Anda sedang dinonaktifkan. Hubungi Owner.",
+  "apiErrorDeviceNotRegistered": "Perangkat ini belum terdaftar sebagai kasir outlet ini. Minta Manager masuk di HP ini untuk mengaktifkannya.",
+  "apiErrorDeviceRevoked": "Perangkat ini sudah dicabut, jadi tidak bisa bertransaksi.",
+  "apiErrorDeviceAlreadyActive": "Perangkat ini sudah aktif sebagai kasir outlet ini.",
+  "apiErrorOrderNotFound": "Transaksi ini tidak ada di outlet ini.",
+  "apiErrorOrderAlreadyVoid": "Transaksi ini sudah di-void.",
+  "apiErrorOrderIdConflict": "ID ini sudah dipakai transaksi lain. Ulangi pesanannya dari awal.",
+  "apiErrorOrderNoTaken": "Nomor struk ini sudah dipakai. Tagih lagi untuk memakai nomor berikutnya.",
+  "noAccessTitle": "Belum ada akses kasir",
+  "noAccessBody": "Role Anda di {outlet} belum mengizinkan transaksi di kasir. Minta Manager outlet menambahkan izin itu, lalu periksa lagi.",
+  "@noAccessBody": {
+    "placeholders": {
+      "outlet": {
+        "type": "String"
+      }
+    }
+  },
+  "noAccessOwnerTitle": "Aplikasi ini untuk kasir",
+  "noAccessOwnerBody": "Akun Owner dipakai di web admin Maki. Aplikasi Android ini untuk Manager dan staf yang bertransaksi di kasir.",
+  "noAccessSignedInAs": "Masuk sebagai {name} (@{username})",
+  "@noAccessSignedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "noAccessCheckAgain": "Periksa lagi",
+  "noAccessUnchanged": "Akses Anda belum berubah.",
+  "apiErrorInternal": "Terjadi kesalahan di server. Coba lagi.",
+  "apiErrorNotFound": "Data tidak ditemukan.",
+  "apiErrorNotReady": "Layanan sedang tidak tersedia. Coba lagi sebentar lagi.",
+  "apiErrorNetwork": "Tidak bisa terhubung ke server. Periksa koneksi internet.",
+  "apiErrorInvalidCredentials": "Username atau password salah.",
+  "apiErrorAccountDisabled": "Akun ini dinonaktifkan. Hubungi Manager atau Owner.",
+  "apiErrorRateLimited": "{minutes, plural, other{Terlalu banyak percobaan. Coba lagi dalam {minutes} menit.}}",
+  "@apiErrorRateLimited": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "apiErrorWrongPassword": "Password saat ini salah.",
+  "apiErrorPasswordTooShort": "Password minimal {min} karakter.",
+  "@apiErrorPasswordTooShort": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "apiErrorPasswordTooLong": "Password maksimal {max} karakter.",
+  "@apiErrorPasswordTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "apiErrorPasswordSameAsUsername": "Password tidak boleh sama dengan username.",
+  "apiErrorUnauthorized": "Sesi Anda sudah berakhir. Silakan masuk lagi.",
+  "apiErrorValidation": "Periksa lagi isian yang ditandai.",
+  "voucherLabel": "Voucher",
+  "voucherHint": "Kode voucher",
+  "voucherApply": "Pakai",
+  "voucherChecking": "Memeriksa…",
+  "voucherRemove": "Lepas voucher {code}",
+  "@voucherRemove": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "voucherMinSpend": "Belanja minimal {amount} untuk voucher ini. Tambah pesanan atau lepas vouchernya.",
+  "@voucherMinSpend": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "voucherRemoved": "Voucher {code} dilepas: {reason}",
+  "@voucherRemoved": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryVoucher": "Potongan ({code})",
+  "@summaryVoucher": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "apiErrorVoucherNotFound": "Tidak ada voucher dengan kode ini.",
+  "apiErrorVoucherInactive": "Voucher ini sedang nonaktif.",
+  "apiErrorVoucherNotStarted": "Voucher ini belum berlaku.",
+  "apiErrorVoucherExpired": "Voucher ini sudah expired.",
+  "apiErrorVoucherUsedUp": "Kuota voucher ini sudah habis.",
+  "apiErrorVoucherNotForOutlet": "Voucher ini tidak berlaku di outlet ini.",
+  "apiErrorVoucherMinSpend": "Belanja belum mencapai minimal belanja voucher ini.",
+  "navTables": "Meja",
+  "@navTables": {
+    "description": "Bottom navigation and rail: the outlet's tables, when it has some."
+  },
+  "tablesTitle": "Meja",
+  "tablesIntro": "Pilih meja untuk melihat statusnya, memesan di sana, atau mengosongkannya setelah customer pergi.",
+  "tablesEmpty": "Outlet ini belum punya meja. Manager menambahkannya di halaman Meja admin.",
+  "tablesLoadFailed": "Meja belum bisa dimuat.",
+  "tableLegend": "Keterangan:",
+  "tableStatusAvailable": "Tersedia",
+  "tableStatusOccupied": "Terisi",
+  "tableStatusInactive": "Nonaktif",
+  "tableStatusScheduled": "Nonaktif terjadwal",
+  "decorationWall": "Dinding",
+  "decorationCashier": "Kasir",
+  "decorationDoor": "Pintu",
+  "tableSeats": "{count} kursi",
+  "@tableSeats": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "tableLabel": "Meja {name}, {status}",
+  "@tableLabel": {
+    "description": "A table on the layout, for screen readers.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "tableLabelSeats": "Meja {name}, {status}, {seats}",
+  "@tableLabelSeats": {
+    "description": "A table on the layout with its seats, for screen readers.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      },
+      "seats": {
+        "type": "String"
+      }
+    }
+  },
+  "tableLayout": "Layout area {area}",
+  "@tableLayout": {
+    "description": "The layout, for screen readers.",
+    "placeholders": {
+      "area": {
+        "type": "String"
+      }
+    }
+  },
+  "tableUnplaced": "Belum ditempatkan di layout:",
+  "tableDetailTitle": "Meja {name}",
+  "@tableDetailTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tableSeatsTerm": "Kursi",
+  "tableNoSeats": "Tidak diisi",
+  "tableSince": "Terisi sejak",
+  "tableOrders": "Transaksi",
+  "tableInactiveNote": "Meja ini sedang dinonaktifkan Manager, jadi tidak bisa dipilih.",
+  "tableScheduledNote": "Meja ini sedang nonaktif terjadwal, jadi tidak bisa dipilih.",
+  "tableOrderHere": "Pesan di meja ini",
+  "tablePendingHint": "Transaksi sebelumnya belum terjawab. Selesaikan dulu di Detail Items.",
+  "tableRelease": "Kosongkan Meja",
+  "tableReleaseTitle": "Kosongkan meja {name}?",
+  "@tableReleaseTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tableReleaseBody": "Lakukan setelah customer meninggalkan meja. Meja jadi tersedia lagi untuk customer berikutnya.",
+  "tableReleased": "Meja {name} dikosongkan.",
+  "@tableReleased": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tablePickTitle": "Pilih meja",
+  "tablePickIntro": "Meja yang tersedia atau terisi bisa dipilih. Pesanan tambahan di meja yang sama jadi transaksi baru.",
+  "tablePick": "Pilih meja",
+  "@tablePick": {
+    "description": "Detail Items: picks a dine-in order's table."
+  },
+  "tablePickOptional": "Opsional",
+  "tableChosen": "Meja {name}",
+  "@tableChosen": {
+    "description": "Detail Items: the order's table.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tableChange": "Ganti",
+  "tableLetGo": "Lepas meja {name}",
+  "@tableLetGo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tableRemoved": "Meja {name} dilepas dari pesanan: {reason}",
+  "@tableRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "tableUnavailableInactive": "mejanya sedang dinonaktifkan.",
+  "tableUnavailableScheduled": "mejanya sedang nonaktif terjadwal.",
+  "tableUnavailableMissing": "mejanya sudah dihapus.",
+  "receiptTable": "Meja",
+  "historyTable": "Meja {name}",
+  "@historyTable": {
+    "description": "Today's orders: an order's table.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "apiErrorTableUnavailable": "Meja ini sedang tidak bisa dipilih.",
+  "apiErrorTableNotFound": "Meja tidak ditemukan.",
+  "standLabel": "Nomor papan",
+  "standPlaceholder": "Misalnya 12",
+  "standHint": "Wajib untuk dine-in: nomor yang tertulis di papan tamu.",
+  "standFormat": "1–10 huruf, angka atau tanda hubung, misalnya 12, A5 atau B-3.",
+  "standTableDropped": "Outlet ini sekarang memakai Mode Nomor, jadi meja {name} dilepas dari pesanan. Isi nomor papan tamu.",
+  "@standTableDropped": {
+    "description": "The outlet turned to number stands: the table picked came off the order.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "standDropped": "Outlet ini sekarang memakai Mode Meja, jadi nomor papan {number} dilepas dari pesanan.",
+  "@standDropped": {
+    "description": "The outlet turned back to tables: the stand's number came off the order.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "standNowNumber": "Outlet ini sekarang memakai Mode Nomor. Isi nomor papan tamu.",
+  "receiptStand": "Nomor papan",
+  "historyStand": "No. {number}",
+  "@historyStand": {
+    "description": "Today's orders: the number on an order's stand.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "tablesNumberMode": "Outlet ini memakai Mode Nomor: tamu dine-in membawa papan nomor, dan kasir mengetik nomornya di Detail Items, tanpa memilih meja.",
+  "apiErrorDineInModeChanged": "Cara outlet ini mencatat tempat tamu dine-in baru saja berubah: di meja, atau dengan nomor papan."
+}

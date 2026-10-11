@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Dev flavor only: lets the app reach the backend on the development
+         machine over plain HTTP. -->
+    <application android:networkSecurityConfig="@xml/network_security_config" />
+</manifest>

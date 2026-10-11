@@ -1,0 +1,69 @@
+name: maki_mobile
+description: "Maki cashier app for Android."
+publish_to: 'none'
+
+# versionName+versionCode on Android; overridden in CI with --build-name and
+# --build-number.
+version: 1.0.0+1
+
+environment:
+  # freezed 4 and the private named parameters in lib/ need Dart 3.13.
+  sdk: ^3.13.0
+
+dependencies:
+  bloc: ^9.2.1
+  dio: ^5.11.1
+  drift: ^2.35.0
+  drift_flutter: ^0.3.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_secure_storage: ^11.2.0
+  freezed_annotation: ^3.1.0
+  go_router: ^18.0.1
+  intl: ^0.20.2
+  json_annotation: ^4.12.0
+  # Generated from ../maki-be/api/openapi.yaml with `make api`.
+  maki_api_client:
+    path: packages/api_client
+  sentry_flutter: ^9.30.1
+  timezone: ^0.11.1
+
+dev_dependencies:
+  bloc_test: ^10.0.0
+  build_runner: ^2.16.1
+  drift_dev: ^2.35.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^4.0.1
+  # The cashier on a device against a real backend (integration_test/).
+  integration_test:
+    sdk: flutter
+  json_serializable: ^6.14.1
+  mocktail: ^1.0.5
+  very_good_analysis: ^11.0.0
+
+flutter:
+  uses-material-design: true
+  # Generates AppLocalizations from lib/l10n/*.arb (see l10n.yaml).
+  generate: true
+
+  assets:
+    # The SIL OFL requires the licence to travel with the font.
+    - assets/fonts/OFL.txt
+
+  fonts:
+    # DESIGN.md's typeface, bundled so text renders the same offline. Static
+    # instances from Google Fonts, one file per weight.
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+          weight: 700

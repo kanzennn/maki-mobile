@@ -1,0 +1,68 @@
+# maki-mobile's pipeline (spec, Infra & deploy): analyze and test on every
+# push and pull request, and check that packages/api_client is what the
+# generator makes of maki-be's contract. maki-be is checked out beside this
+# repository, as in development (../maki-be); a private maki-be needs the
+# MAKI_BE_TOKEN secret, a token that may read it. No release APK yet: it
+# comes with its signing (docs/deployment.md).
+name: maki-mobile
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    working-directory: maki-mobile
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          path: maki-mobile
+      - uses: actions/checkout@v7
+        with:
+          repository: ${{ github.repository_owner }}/maki-be
+          token: ${{ secrets.MAKI_BE_TOKEN || github.token }}
+          path: maki-be
+      - uses: subosito/flutter-action@v2
+        with:
+          # The version the app is developed with (README).
+          flutter-version: 3.47.5
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Tests, the ARB files' keys among them
+        run: flutter test
+      # openapi-generator runs on Java (Makefile, make api).
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: The API client matches maki-be's contract
+        # As make api does it. The generator's own files are compared; the
+        # .g.dart files json_serializable makes from them follow, and the
+        # analyze and the tests above use them.
+        run: |
+          rm -rf packages/api_client
+          npx --yes @openapitools/openapi-generator-cli@2.41.0 generate -i ../maki-be/api/openapi.yaml -g dart-dio \
+            -o packages/api_client -c openapi-generator.yaml -t openapi-templates
+          git diff --exit-code -- packages/api_client ':(exclude)packages/api_client/**/*.g.dart'
+          untracked="$(git ls-files --others --exclude-standard -- packages/api_client)"
+          if [ -n "$untracked" ]; then
+            echo "Generated, but not in the repository:"
+            echo "$untracked"
+            exit 1
+          fi

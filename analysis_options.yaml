@@ -1,0 +1,21 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    # Generated code: never edited by hand, so never linted either.
+    - packages/api_client/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - lib/l10n/app_localizations*.dart
+
+linter:
+  rules:
+    # This is an app, not a published package: doc comments go where they
+    # explain something, not on every public member.
+    public_member_api_docs: false
+    # Keeps `ClassName(...)` constructors. freezed reads the factory
+    # constructors of its classes, so one style everywhere beats the newer
+    # `new(...)` form in some files and not in others.
+    unnecessary_type_name_in_constructor: false

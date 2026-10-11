@@ -1,0 +1,9 @@
+# flutter gen-l10n runs on every `flutter pub get` and build (pubspec
+# `generate: true`) and writes AppLocalizations next to the ARB files.
+arb-dir: lib/l10n
+# Indonesian is the default language, so its file defines the keys.
+template-arb-file: app_id.arb
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+nullable-getter: false
+untranslated-messages-file: build/untranslated-messages.json
