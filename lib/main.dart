@@ -9,6 +9,7 @@ import 'package:maki_mobile/core/auth/device_token.dart';
 import 'package:maki_mobile/core/auth/token_storage.dart';
 import 'package:maki_mobile/core/config/app_config.dart';
 import 'package:maki_mobile/core/utils/time.dart';
+import 'package:maki_mobile/features/pos/data/receipt_printer.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -45,6 +46,8 @@ Future<void> main() async {
     config: config,
     api: api,
     deviceTokens: deviceTokens,
+    printerBridge: BluetoothPrinterBridge(),
+    printerSettings: SecurePrinterSettingsStorage(),
     session: session,
     router: createRouter(session),
   );

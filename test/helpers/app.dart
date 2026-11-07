@@ -9,6 +9,7 @@ import 'package:maki_mobile/core/auth/session_cubit.dart';
 import 'package:maki_mobile/core/config/app_config.dart';
 
 import 'fakes.dart';
+import 'printer.dart';
 
 /// A phone in portrait, and a tablet in landscape: the two layouts.
 const phoneSize = Size(390, 844);
@@ -45,6 +46,7 @@ Future<TestApp> pumpApp(
   Map<String, (int, Object?) Function(RequestOptions)> routes = const {},
   DateTime Function()? now,
   double textScale = 1,
+  FakePrinter? printer,
 }) async {
   tester.view
     ..physicalSize = size
@@ -76,6 +78,8 @@ Future<TestApp> pumpApp(
       config: testConfig,
       api: api,
       deviceTokens: deviceTokens,
+      printerBridge: printer ?? FakePrinter(),
+      printerSettings: printer ?? FakePrinter(),
       session: session,
       router: createRouter(session, now: now ?? () => testNow),
     ),

@@ -1561,6 +1561,132 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Cara outlet ini mencatat tempat tamu dine-in baru saja berubah: di meja, atau dengan nomor papan.'**
   String get apiErrorDineInModeChanged;
+
+  /// No description provided for @accountPrinter.
+  ///
+  /// In id, this message translates to:
+  /// **'Printer struk'**
+  String get accountPrinter;
+
+  /// No description provided for @accountPrinterNone.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum dipilih'**
+  String get accountPrinterNone;
+
+  /// No description provided for @printerTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Printer struk'**
+  String get printerTitle;
+
+  /// No description provided for @printerPairHint.
+  ///
+  /// In id, this message translates to:
+  /// **'Pasangkan printer Bluetooth di pengaturan Android lebih dulu, lalu pilih di sini.'**
+  String get printerPairHint;
+
+  /// No description provided for @printerNonePaired.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum ada perangkat yang dipasangkan.'**
+  String get printerNonePaired;
+
+  /// No description provided for @printerChosen.
+  ///
+  /// In id, this message translates to:
+  /// **'Dipilih'**
+  String get printerChosen;
+
+  /// No description provided for @printerRefresh.
+  ///
+  /// In id, this message translates to:
+  /// **'Muat ulang daftar'**
+  String get printerRefresh;
+
+  /// No description provided for @printerPaper.
+  ///
+  /// In id, this message translates to:
+  /// **'Lebar kertas'**
+  String get printerPaper;
+
+  /// No description provided for @printerAuto.
+  ///
+  /// In id, this message translates to:
+  /// **'Cetak struk otomatis setelah transaksi tersimpan'**
+  String get printerAuto;
+
+  /// No description provided for @printerTest.
+  ///
+  /// In id, this message translates to:
+  /// **'Cetak tes'**
+  String get printerTest;
+
+  /// No description provided for @printerTestTicket.
+  ///
+  /// In id, this message translates to:
+  /// **'Tes printer Maki'**
+  String get printerTestTicket;
+
+  /// No description provided for @printerTestSent.
+  ///
+  /// In id, this message translates to:
+  /// **'Tes terkirim. Periksa kertas di printer.'**
+  String get printerTestSent;
+
+  /// No description provided for @printerPrinting.
+  ///
+  /// In id, this message translates to:
+  /// **'Mencetak…'**
+  String get printerPrinting;
+
+  /// No description provided for @printReceipt.
+  ///
+  /// In id, this message translates to:
+  /// **'Cetak struk'**
+  String get printReceipt;
+
+  /// No description provided for @printReceiptAgain.
+  ///
+  /// In id, this message translates to:
+  /// **'Cetak ulang'**
+  String get printReceiptAgain;
+
+  /// No description provided for @printerProblemNoPrinter.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum ada printer. Pilih printer di Akun, Printer struk. Transaksi tetap tersimpan.'**
+  String get printerProblemNoPrinter;
+
+  /// No description provided for @printerProblemUnavailable.
+  ///
+  /// In id, this message translates to:
+  /// **'Perangkat ini tidak punya Bluetooth.'**
+  String get printerProblemUnavailable;
+
+  /// No description provided for @printerProblemBluetoothOff.
+  ///
+  /// In id, this message translates to:
+  /// **'Bluetooth mati. Nyalakan, lalu coba lagi.'**
+  String get printerProblemBluetoothOff;
+
+  /// No description provided for @printerProblemDenied.
+  ///
+  /// In id, this message translates to:
+  /// **'Izin Bluetooth ditolak. Izinkan \"Perangkat di sekitar\" untuk Maki di pengaturan Android.'**
+  String get printerProblemDenied;
+
+  /// No description provided for @printerProblemConnect.
+  ///
+  /// In id, this message translates to:
+  /// **'Printer tidak menjawab. Pastikan printer menyala dan dekat, lalu coba lagi.'**
+  String get printerProblemConnect;
+
+  /// No description provided for @printerProblemSend.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengiriman ke printer terputus. Periksa kertas, lalu coba lagi.'**
+  String get printerProblemSend;
 }
 
 class _AppLocalizationsDelegate

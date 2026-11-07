@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:maki_mobile/app/routes.dart';
 import 'package:maki_mobile/app/theme/app_theme.dart';
 import 'package:maki_mobile/app/theme/tokens.dart';
 import 'package:maki_mobile/core/auth/account.dart';
@@ -9,12 +11,14 @@ import 'package:maki_mobile/core/auth/session_cubit.dart';
 import 'package:maki_mobile/core/utils/time.dart';
 import 'package:maki_mobile/features/pos/domain/till_device.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/device_cubit.dart';
+import 'package:maki_mobile/features/pos/presentation/cubit/printer_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/sale_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/pos_parts.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
 
 /// Who is signed in, where, on which device, and today's date at the
-/// outlet: what DESIGN.md's phone layout moves off the sell screen. Signing
+/// outlet: what DESIGN.md's phone layout moves off the sell screen, and the
+/// way to this phone's receipt printer. Signing
 /// out frees the phone for the next cashier; with an order being rung up,
 /// it asks first.
 class AccountScreen extends StatelessWidget {
@@ -65,6 +69,9 @@ class AccountScreen extends StatelessWidget {
     );
     if (user == null) return const Scaffold();
     final outlet = user.outlet;
+    final printer = context.select<PrinterCubit, String?>(
+      (cubit) => cubit.state.settings.printer?.name,
+    );
 
     Widget item(IconData icon, String label, String value) => ListTile(
       leading: Icon(icon, color: context.tokens.iconMuted),
@@ -110,6 +117,27 @@ class AccountScreen extends StatelessWidget {
               formatDate(now().toUtc(), l10n.localeName, outlet.timeZone),
             ),
           ],
+          ListTile(
+            leading: Icon(
+              Icons.print_outlined,
+              color: context.tokens.iconMuted,
+            ),
+            title: Text(
+              l10n.accountPrinter,
+              style: theme.textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.w400,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+            subtitle: Text(
+              printer ?? l10n.accountPrinterNone,
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.goNamed(Routes.posPrinter),
+          ),
           Padding(
             padding: const EdgeInsets.all(MakiSpacing.lg),
             child: OutlinedButton.icon(

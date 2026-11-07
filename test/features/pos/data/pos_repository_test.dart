@@ -41,10 +41,8 @@ void main() {
 
   test('follows the outlet with a new ticket, over ws', () async {
     final (pos, adapter) = await repositoryWith({
-      'POST /api/v1/outlets/o1/realtime/ticket': (_) => (
-        200,
-        {'ticket': 'abc', 'expires_in': 30},
-      ),
+      'POST /api/v1/outlets/o1/realtime/ticket': (_) =>
+          (200, {'ticket': 'abc', 'expires_in': 30}),
     });
     final uri = await pos.liveSocketUri();
     expect(uri.scheme, anyOf('ws', 'wss'));

@@ -13,6 +13,7 @@ import 'package:maki_mobile/features/pos/presentation/screens/account_screen.dar
 import 'package:maki_mobile/features/pos/presentation/screens/history_screen.dart';
 import 'package:maki_mobile/features/pos/presentation/screens/order_detail_screen.dart';
 import 'package:maki_mobile/features/pos/presentation/screens/order_screen.dart';
+import 'package:maki_mobile/features/pos/presentation/screens/printer_screen.dart';
 import 'package:maki_mobile/features/pos/presentation/screens/sell_screen.dart';
 import 'package:maki_mobile/features/pos/presentation/screens/tables_screen.dart';
 
@@ -96,6 +97,13 @@ GoRouter createRouter(
             name: Routes.posAccount,
             pageBuilder: (context, state) =>
                 NoTransitionPage(child: AccountScreen(now: now)),
+            routes: [
+              GoRoute(
+                path: 'printer',
+                name: Routes.posPrinter,
+                builder: (context, state) => const PrinterScreen(),
+              ),
+            ],
           ),
         ],
       ),

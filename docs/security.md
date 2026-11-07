@@ -51,7 +51,7 @@ in [maki-be's security.md](../../maki-be/docs/security.md#cashier-devices)):
   another outlet, say — keeps the token: that outlet can still revoke it,
   and activating the phone here replaces it.
 - **The order being rung up stays in memory**, never on disk; signing out
-  drops it, after asking. Receipts show on screen only.
+  drops it, after asking. The printer's settings hold no sale.
 
 ## Backups and device transfers
 
@@ -99,6 +99,28 @@ app shows.
 merged manifest also carries androidx's
 `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`, which is private to the app.
 
+### The receipt printer
+
+Re-audited when the Bluetooth printer came (standard §9):
+
+- **Only what it uses, when it needs it.** `BLUETOOTH_CONNECT` from Android 12,
+  asked for on opening the printer screen or on printing; `BLUETOOTH` before
+  that, up to API 30, granted at install. No `BLUETOOTH_SCAN` and no location,
+  since the app only lists devices paired in Android's settings.
+  `android.hardware.bluetooth` is optional, so a device without it still sells.
+- **Text can't become a command.** A menu's name or a cashier's note reaches the
+  printer as data, so `core/printing/esc_pos.dart` drops control characters and
+  sends plain ASCII. The tests fail on any control byte that isn't one of the
+  app's own commands.
+- **What leaves the phone** is the receipt, over the printer's paired link, and
+  nothing comes back. A receipt holds the cashier's name and the sale, as its
+  paper copy always has.
+- **Settings:** the printer's name and address, the paper and the auto-print
+  switch, in secure storage because the app already has it. They aren't secret,
+  and they stay when signing out, as they are the phone's. No printer data is
+  logged.
+- **No new dependency:** the channel is the app's own Kotlin.
+
 ## Secrets, logs and errors
 
 - No secrets in the app: `env/<flavor>.json` holds public config
@@ -111,8 +133,6 @@ merged manifest also carries androidx's
 ## Not built yet
 
 - Offline sign-in, and the local database decision above.
-- Printing receipts: a Bluetooth printer is a new hardware integration, so
-  it comes with a re-audit (standard §9).
 - Release signing and Sentry symbol upload; see
   [README.md](./README.md#known-trade-offs-and-open-items).
 

@@ -323,8 +323,9 @@ whatever the screen's (`lookupAppLocalizations(Locale(outlet.locale))`), as
 the spec prints them and the web shows them; times in the outlet's zone. A
 voucher's discount is *Potongan (KODE)*, a dine-in order's table is under
 its type, and a stand's number shows large under the outlet's name, for the
-waiter who brings the order. The receipt shows on screen after the sale and on an order's page; printing,
-to a Bluetooth printer, comes later.
+waiter who brings the order. The receipt shows on screen after the sale and on an order's page, and prints
+from both to a Bluetooth printer ([hardware.md](./hardware.md)): by hand, or by
+itself after a sale where the phone is set to.
 
 **Today's orders** (`TodayOrdersCubit`) load a page of 20 at a time,
 searchable by part of a receipt number, each with its table or its

@@ -709,5 +709,26 @@
     }
   },
   "tablesNumberMode": "Outlet ini memakai Mode Nomor: tamu dine-in membawa papan nomor, dan kasir mengetik nomornya di Detail Items, tanpa memilih meja.",
-  "apiErrorDineInModeChanged": "Cara outlet ini mencatat tempat tamu dine-in baru saja berubah: di meja, atau dengan nomor papan."
+  "apiErrorDineInModeChanged": "Cara outlet ini mencatat tempat tamu dine-in baru saja berubah: di meja, atau dengan nomor papan.",
+  "accountPrinter": "Printer struk",
+  "accountPrinterNone": "Belum dipilih",
+  "printerTitle": "Printer struk",
+  "printerPairHint": "Pasangkan printer Bluetooth di pengaturan Android lebih dulu, lalu pilih di sini.",
+  "printerNonePaired": "Belum ada perangkat yang dipasangkan.",
+  "printerChosen": "Dipilih",
+  "printerRefresh": "Muat ulang daftar",
+  "printerPaper": "Lebar kertas",
+  "printerAuto": "Cetak struk otomatis setelah transaksi tersimpan",
+  "printerTest": "Cetak tes",
+  "printerTestTicket": "Tes printer Maki",
+  "printerTestSent": "Tes terkirim. Periksa kertas di printer.",
+  "printerPrinting": "Mencetak…",
+  "printReceipt": "Cetak struk",
+  "printReceiptAgain": "Cetak ulang",
+  "printerProblemNoPrinter": "Belum ada printer. Pilih printer di Akun, Printer struk. Transaksi tetap tersimpan.",
+  "printerProblemUnavailable": "Perangkat ini tidak punya Bluetooth.",
+  "printerProblemBluetoothOff": "Bluetooth mati. Nyalakan, lalu coba lagi.",
+  "printerProblemDenied": "Izin Bluetooth ditolak. Izinkan \"Perangkat di sekitar\" untuk Maki di pengaturan Android.",
+  "printerProblemConnect": "Printer tidak menjawab. Pastikan printer menyala dan dekat, lalu coba lagi.",
+  "printerProblemSend": "Pengiriman ke printer terputus. Periksa kertas, lalu coba lagi."
 }

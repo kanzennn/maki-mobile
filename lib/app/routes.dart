@@ -6,11 +6,12 @@ abstract final class Routes {
   static const noAccess = 'no-access';
 
   /// The cashier: selling, the order full screen on a phone, the tables,
-  /// today's orders, one order, and the account.
+  /// today's orders, one order, the account, and its printer.
   static const pos = 'pos';
   static const posOrder = 'pos-order';
   static const posTables = 'pos-tables';
   static const posHistory = 'pos-history';
   static const posOrderDetail = 'pos-order-detail';
   static const posAccount = 'pos-account';
+  static const posPrinter = 'pos-printer';
 }

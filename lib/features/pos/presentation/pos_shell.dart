@@ -13,11 +13,13 @@ import 'package:maki_mobile/core/utils/money.dart';
 import 'package:maki_mobile/core/utils/window_size.dart';
 import 'package:maki_mobile/features/pos/data/outlet_live.dart';
 import 'package:maki_mobile/features/pos/data/pos_repository.dart';
+import 'package:maki_mobile/features/pos/data/receipt_printer.dart';
 import 'package:maki_mobile/features/pos/domain/catalog.dart';
 import 'package:maki_mobile/features/pos/domain/checkout.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/catalog_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/device_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/floor_cubit.dart';
+import 'package:maki_mobile/features/pos/presentation/cubit/printer_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/sale_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/pos_parts.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
@@ -83,6 +85,17 @@ class PosShell extends StatelessWidget {
           BlocProvider(
             create: (context) =>
                 SaleCubit(context.read<PosRepository>(), now: now),
+          ),
+          BlocProvider(
+            lazy: false,
+            create: (context) {
+              final printer = PrinterCubit(
+                context.read<PrinterBridge>(),
+                context.read<PrinterSettingsStorage>(),
+              );
+              unawaited(printer.load());
+              return printer;
+            },
           ),
         ],
         child: _Bridges(

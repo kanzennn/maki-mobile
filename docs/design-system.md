@@ -93,7 +93,7 @@ Layouts follow the window width (`context.windowSize`), never the device:
   total — each on one line, smaller rather than broken in two), and the
   change at the line's end, or what is short in the error colours. Without an answer it says so, with *Kirim ulang*
   and *Batalkan transaksi ini*; once taken, it shows the change and the
-  receipt, and *Transaksi baru*.
+  receipt, *Cetak struk*, and *Transaksi baru*.
 - **The receipt** is a paper-white card at most 300dp wide — a 58 mm roll's
   printable width — with the outlet, a stand's number in headlineSmall
   under it for the waiter, the number on a line of its own, the time,

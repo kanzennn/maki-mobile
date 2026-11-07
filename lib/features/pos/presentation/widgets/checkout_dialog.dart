@@ -12,8 +12,10 @@ import 'package:maki_mobile/features/pos/domain/catalog.dart';
 import 'package:maki_mobile/features/pos/domain/checkout.dart';
 import 'package:maki_mobile/features/pos/domain/order.dart';
 import 'package:maki_mobile/features/pos/domain/till_device.dart';
+import 'package:maki_mobile/features/pos/presentation/cubit/printer_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/sale_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/pos_parts.dart';
+import 'package:maki_mobile/features/pos/presentation/widgets/print_receipt_button.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/receipt_view.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
 
@@ -34,12 +36,16 @@ Future<void> openCheckout(
   bool resend = false,
 }) async {
   final sale = context.read<SaleCubit>();
+  final printer = context.read<PrinterCubit>();
   if (resend) unawaited(sale.resend());
   await showDialog<void>(
     context: context,
     barrierDismissible: false,
-    builder: (_) => BlocProvider.value(
-      value: sale,
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: sale),
+        BlocProvider.value(value: printer),
+      ],
       child: CheckoutDialog(catalog: catalog, device: device),
     ),
   );
@@ -359,8 +365,8 @@ class _Unanswered extends StatelessWidget {
   }
 }
 
-/// The sale is saved: the change to hand back, the receipt to look over,
-/// and the way to the next customer.
+/// The sale is saved: the change to hand back, the receipt to look over and
+/// print, at once where the phone is set to, and the way to the next customer.
 class _Sold extends StatelessWidget {
   const _Sold({required this.order, required this.outlet});
 
@@ -407,6 +413,13 @@ class _Sold extends StatelessWidget {
           ),
         ),
         const SizedBox(height: MakiSpacing.lg),
+        PrintReceiptButton(
+          order: order,
+          outlet: outlet,
+          label: l10n.printReceipt,
+          printAtOnce: true,
+        ),
+        const SizedBox(height: MakiSpacing.sm),
         FilledButton(
           autofocus: true,
           onPressed: () => Navigator.of(context).pop(),

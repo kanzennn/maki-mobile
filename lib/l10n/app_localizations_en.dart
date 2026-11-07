@@ -955,4 +955,73 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get apiErrorDineInModeChanged =>
       'How this outlet seats its dine-in customers just changed: at tables, or by number stands.';
+
+  @override
+  String get accountPrinter => 'Receipt printer';
+
+  @override
+  String get accountPrinterNone => 'None chosen';
+
+  @override
+  String get printerTitle => 'Receipt printer';
+
+  @override
+  String get printerPairHint =>
+      'Pair the Bluetooth printer in Android\'s settings first, then choose it here.';
+
+  @override
+  String get printerNonePaired => 'No devices are paired yet.';
+
+  @override
+  String get printerChosen => 'Chosen';
+
+  @override
+  String get printerRefresh => 'Reload the list';
+
+  @override
+  String get printerPaper => 'Paper width';
+
+  @override
+  String get printerAuto => 'Print the receipt as soon as the sale is saved';
+
+  @override
+  String get printerTest => 'Print a test';
+
+  @override
+  String get printerTestTicket => 'Maki printer test';
+
+  @override
+  String get printerTestSent => 'Test sent. Check the paper in the printer.';
+
+  @override
+  String get printerPrinting => 'Printing…';
+
+  @override
+  String get printReceipt => 'Print receipt';
+
+  @override
+  String get printReceiptAgain => 'Print again';
+
+  @override
+  String get printerProblemNoPrinter =>
+      'No printer yet. Choose one under Account, Receipt printer. The sale is saved.';
+
+  @override
+  String get printerProblemUnavailable => 'This device has no Bluetooth.';
+
+  @override
+  String get printerProblemBluetoothOff =>
+      'Bluetooth is off. Turn it on and try again.';
+
+  @override
+  String get printerProblemDenied =>
+      'Bluetooth permission was refused. Allow Maki \"Nearby devices\" in Android\'s settings.';
+
+  @override
+  String get printerProblemConnect =>
+      'The printer didn\'t answer. Check that it is on and close by, then try again.';
+
+  @override
+  String get printerProblemSend =>
+      'Sending to the printer broke off. Check the paper, then try again.';
 }

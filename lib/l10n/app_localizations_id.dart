@@ -929,4 +929,74 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get apiErrorDineInModeChanged =>
       'Cara outlet ini mencatat tempat tamu dine-in baru saja berubah: di meja, atau dengan nomor papan.';
+
+  @override
+  String get accountPrinter => 'Printer struk';
+
+  @override
+  String get accountPrinterNone => 'Belum dipilih';
+
+  @override
+  String get printerTitle => 'Printer struk';
+
+  @override
+  String get printerPairHint =>
+      'Pasangkan printer Bluetooth di pengaturan Android lebih dulu, lalu pilih di sini.';
+
+  @override
+  String get printerNonePaired => 'Belum ada perangkat yang dipasangkan.';
+
+  @override
+  String get printerChosen => 'Dipilih';
+
+  @override
+  String get printerRefresh => 'Muat ulang daftar';
+
+  @override
+  String get printerPaper => 'Lebar kertas';
+
+  @override
+  String get printerAuto => 'Cetak struk otomatis setelah transaksi tersimpan';
+
+  @override
+  String get printerTest => 'Cetak tes';
+
+  @override
+  String get printerTestTicket => 'Tes printer Maki';
+
+  @override
+  String get printerTestSent => 'Tes terkirim. Periksa kertas di printer.';
+
+  @override
+  String get printerPrinting => 'Mencetak…';
+
+  @override
+  String get printReceipt => 'Cetak struk';
+
+  @override
+  String get printReceiptAgain => 'Cetak ulang';
+
+  @override
+  String get printerProblemNoPrinter =>
+      'Belum ada printer. Pilih printer di Akun, Printer struk. Transaksi tetap tersimpan.';
+
+  @override
+  String get printerProblemUnavailable =>
+      'Perangkat ini tidak punya Bluetooth.';
+
+  @override
+  String get printerProblemBluetoothOff =>
+      'Bluetooth mati. Nyalakan, lalu coba lagi.';
+
+  @override
+  String get printerProblemDenied =>
+      'Izin Bluetooth ditolak. Izinkan \"Perangkat di sekitar\" untuk Maki di pengaturan Android.';
+
+  @override
+  String get printerProblemConnect =>
+      'Printer tidak menjawab. Pastikan printer menyala dan dekat, lalu coba lagi.';
+
+  @override
+  String get printerProblemSend =>
+      'Pengiriman ke printer terputus. Periksa kertas, lalu coba lagi.';
 }

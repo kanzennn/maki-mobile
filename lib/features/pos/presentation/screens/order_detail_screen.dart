@@ -13,11 +13,13 @@ import 'package:maki_mobile/features/pos/presentation/cubit/catalog_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/cubit/order_cubit.dart';
 import 'package:maki_mobile/features/pos/presentation/pos_shell.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/pos_parts.dart';
+import 'package:maki_mobile/features/pos/presentation/widgets/print_receipt_button.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/receipt_view.dart';
 import 'package:maki_mobile/features/pos/presentation/widgets/void_dialog.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
 
-/// One of today's orders: its receipt, and, with `order.void`, its void.
+/// One of today's orders: its receipt to print again, and, with `order.void`,
+/// its void.
 class OrderDetailScreen extends StatelessWidget {
   const OrderDetailScreen({required this.orderId, super.key});
 
@@ -89,6 +91,17 @@ class _OrderDetail extends StatelessWidget {
                   const SizedBox(height: MakiSpacing.md),
                 ],
                 ReceiptView(order: order, outlet: receiptOutlet(context)),
+                const SizedBox(height: MakiSpacing.lg),
+                Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 320),
+                    child: PrintReceiptButton(
+                      order: order,
+                      outlet: receiptOutlet(context),
+                      label: l10n.printReceiptAgain,
+                    ),
+                  ),
+                ),
                 if (canVoid && order.status == OrderStatus.paid) ...[
                   const SizedBox(height: MakiSpacing.xl),
                   Center(

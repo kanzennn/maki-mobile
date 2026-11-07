@@ -14,6 +14,7 @@ import 'package:maki_mobile/features/pos/presentation/widgets/menu_browser.dart'
 import 'app.dart';
 import 'fakes.dart';
 import 'pos.dart';
+import 'printer.dart';
 import 'pump.dart';
 
 typedef ApiRoute = (int, Object?) Function(RequestOptions request);
@@ -89,6 +90,7 @@ Future<TestApp> openCashier(
   Map<String, ApiRoute> routes = const {},
   DateTime Function()? now,
   double textScale = 1,
+  FakePrinter? printer,
 }) async {
   final app = await pumpApp(
     tester,
@@ -97,6 +99,7 @@ Future<TestApp> openCashier(
     deviceToken: 'device-1',
     now: now,
     textScale: textScale,
+    printer: printer,
     routes: {
       'POST /api/v1/auth/refresh': (_) => (200, sessionJson(user: user)),
       'POST /api/v1/auth/logout': (_) => (204, null),

@@ -7,8 +7,10 @@
 | [deployment.md](./deployment.md) | Flavors, building, versioning, the pipeline, and what a first release still needs (signing, distribution) |
 | [security.md](./security.md) | Token storage, the cashier device, backups, local database decision, transport, who the app is for, Android permissions, what isn't built yet, checks done |
 
-`offline.md` and `hardware.md` (thermal printer) are added when there is
-something project-specific to put in them. The design source
+| [hardware.md](./hardware.md) | The Bluetooth receipt printer: using it, what it supports, what to check on a first printer |
+
+`offline.md` is added when there is something project-specific to put in it.
+The design source
 is [`Maki/DESIGN.md`](../../DESIGN.md).
 
 ## The short version
@@ -48,8 +50,9 @@ is [`Maki/DESIGN.md`](../../DESIGN.md).
   never came is let go of only with a warning to check today's orders.
 - **The layout is arranged in the web admin.** The app shows it, a table
   in its shape and box but not turned, and doesn't change it.
-- **Receipts show on screen only.** Printing to a Bluetooth thermal printer
-  comes later, with `hardware.md`.
+- **Receipts print over Bluetooth Classic only**, to a printer paired in
+  Android's settings, and no physical printer has been tested yet
+  ([hardware.md](./hardware.md)).
 - **A revoked phone learns it at its next device check** — a sale, opening
   the cashier, or coming back to the front — and then signs out. The server
   refuses its sales from the moment it is revoked.

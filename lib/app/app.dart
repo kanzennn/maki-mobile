@@ -7,6 +7,7 @@ import 'package:maki_mobile/app/theme/app_theme.dart';
 import 'package:maki_mobile/core/auth/device_token.dart';
 import 'package:maki_mobile/core/auth/session_cubit.dart';
 import 'package:maki_mobile/core/config/app_config.dart';
+import 'package:maki_mobile/features/pos/data/receipt_printer.dart';
 import 'package:maki_mobile/l10n/app_localizations.dart';
 
 /// Provides the app-wide dependencies above [MaterialApp]; everything else
@@ -16,6 +17,8 @@ class App extends StatelessWidget {
     required this.config,
     required this.api,
     required this.deviceTokens,
+    required this.printerBridge,
+    required this.printerSettings,
     required this.session,
     required this.router,
     super.key,
@@ -24,6 +27,8 @@ class App extends StatelessWidget {
   final AppConfig config;
   final MakiApiClient api;
   final DeviceTokenStore deviceTokens;
+  final PrinterBridge printerBridge;
+  final PrinterSettingsStorage printerSettings;
   final SessionCubit session;
   final GoRouter router;
 
@@ -34,6 +39,8 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: config),
         RepositoryProvider.value(value: api),
         RepositoryProvider.value(value: deviceTokens),
+        RepositoryProvider.value(value: printerBridge),
+        RepositoryProvider.value(value: printerSettings),
       ],
       child: BlocProvider.value(
         value: session,
