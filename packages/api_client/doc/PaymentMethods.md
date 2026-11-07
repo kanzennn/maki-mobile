@@ -1,0 +1,15 @@
+# maki_api_client.model.PaymentMethods
+
+## Load the model package
+```dart
+import 'package:maki_api_client/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**methods** | [**List&lt;PaymentControlMethod&gt;**](PaymentControlMethod.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

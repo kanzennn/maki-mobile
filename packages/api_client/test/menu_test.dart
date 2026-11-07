@@ -33,9 +33,15 @@ void main() {
       // TODO
     });
 
-    // The photo on the CDN; null until photos arrive, and for a menu without one.
+    // The 800 × 800 photo on the CDN; null for a menu without one.
     // String imageUrl
     test('to test the property `imageUrl`', () async {
+      // TODO
+    });
+
+    // The 200 × 200 photo on the CDN; null for a menu without one.
+    // String imageThumbUrl
+    test('to test the property `imageThumbUrl`', () async {
       // TODO
     });
 

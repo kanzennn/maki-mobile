@@ -7,6 +7,18 @@ void main() {
   // TODO add properties to the entity
 
   group(UpdateStaffRequest, () {
+    // A finished upload, to become the account's photo; the old one shows until the worker is done.
+    // String uploadKey
+    test('to test the property `uploadKey`', () async {
+      // TODO
+    });
+
+    // Takes the photo away. `upload_key` wins if both are sent.
+    // bool removePhoto
+    test('to test the property `removePhoto`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO

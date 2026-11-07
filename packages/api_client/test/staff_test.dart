@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the entity
 
   group(Staff, () {
+    // A short-lived address of the photo; null without one.
+    // String photoUrl
+    test('to test the property `photoUrl`', () async {
+      // TODO
+    });
+
     // String userId
     test('to test the property `userId`', () async {
       // TODO

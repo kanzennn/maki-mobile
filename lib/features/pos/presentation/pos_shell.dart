@@ -11,6 +11,7 @@ import 'package:maki_mobile/core/auth/device_token.dart';
 import 'package:maki_mobile/core/auth/session_cubit.dart';
 import 'package:maki_mobile/core/utils/money.dart';
 import 'package:maki_mobile/core/utils/window_size.dart';
+import 'package:maki_mobile/features/pos/data/outlet_live.dart';
 import 'package:maki_mobile/features/pos/data/pos_repository.dart';
 import 'package:maki_mobile/features/pos/domain/catalog.dart';
 import 'package:maki_mobile/features/pos/domain/checkout.dart';
@@ -104,6 +105,9 @@ class PosShell extends StatelessWidget {
 ///   the tables for `dine_in_mode_changed`, the catalog for the rest.
 /// - The app comes back to the front: they all load again; in the
 ///   background, the catalog and the tables stop loading.
+/// - The outlet's live messages say the catalog or the tables changed, at
+///   another cashier or in the admin: that one loads again. They stop in the
+///   background too.
 class _Bridges extends StatefulWidget {
   const _Bridges({required this.child});
 
@@ -114,15 +118,32 @@ class _Bridges extends StatefulWidget {
 }
 
 class _BridgesState extends State<_Bridges> with WidgetsBindingObserver {
+  late final OutletLive _live;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _live = OutletLive(
+      socketUri: context.read<PosRepository>().liveSocketUri,
+      onChange: _changed,
+    )..start();
+  }
+
+  void _changed(Set<String> topics) {
+    if (!mounted) return;
+    if (topics.contains(LiveTopic.catalog)) {
+      unawaited(context.read<CatalogCubit>().refresh());
+    }
+    if (topics.contains(LiveTopic.tables)) {
+      unawaited(context.read<FloorCubit>().refresh());
+    }
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _live.stop();
     super.dispose();
   }
 
@@ -135,9 +156,11 @@ class _BridgesState extends State<_Bridges> with WidgetsBindingObserver {
         unawaited(catalog.resumed());
         unawaited(floor.resumed());
         unawaited(context.read<DeviceCubit>().refresh());
+        _live.start();
       case AppLifecycleState.hidden || AppLifecycleState.paused:
         catalog.paused();
         floor.paused();
+        _live.stop();
       case AppLifecycleState.inactive || AppLifecycleState.detached:
         break;
     }

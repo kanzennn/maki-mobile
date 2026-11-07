@@ -22,6 +22,20 @@ class PosRepository {
 
   api.OrderApi get _orders => _api.getOrderApi();
 
+  /// Where to follow the outlet's live messages, with a ticket good for one
+  /// connection, for a moment: a new one for each.
+  Future<Uri> liveSocketUri() async {
+    final ticket = await apiCall(
+      _api.getRealtimeApi().createRealtimeTicket(oid: outletId),
+    );
+    final base = Uri.parse(_api.dio.options.baseUrl);
+    return base.replace(
+      scheme: base.scheme == 'https' ? 'wss' : 'ws',
+      path: '/api/v1/outlets/$outletId/realtime',
+      queryParameters: {'ticket': ticket.ticket},
+    );
+  }
+
   Future<Catalog> catalog() async =>
       catalogFromDto(await apiCall(_orders.getPosCatalog(oid: outletId)));
 
@@ -161,6 +175,7 @@ Catalog catalogFromDto(api.PosCatalog dto) => Catalog(
         price: m.price,
         trackStock: m.trackStock,
         stockQty: m.stockQty,
+        photoUrl: m.imageThumbUrl,
         stock: switch (m.stockStatus) {
           api.StockStatus.untracked => StockLevel.untracked,
           api.StockStatus.ok => StockLevel.ok,

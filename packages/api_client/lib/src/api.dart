@@ -8,14 +8,19 @@ import 'package:maki_api_client/src/auth/basic_auth.dart';
 import 'package:maki_api_client/src/auth/bearer_auth.dart';
 import 'package:maki_api_client/src/auth/oauth.dart';
 import 'package:maki_api_client/src/api/auth_api.dart';
+import 'package:maki_api_client/src/api/dashboard_api.dart';
 import 'package:maki_api_client/src/api/device_api.dart';
 import 'package:maki_api_client/src/api/health_api.dart';
+import 'package:maki_api_client/src/api/log_api.dart';
 import 'package:maki_api_client/src/api/me_api.dart';
 import 'package:maki_api_client/src/api/menu_api.dart';
 import 'package:maki_api_client/src/api/order_api.dart';
 import 'package:maki_api_client/src/api/outlet_api.dart';
+import 'package:maki_api_client/src/api/payment_api.dart';
+import 'package:maki_api_client/src/api/realtime_api.dart';
 import 'package:maki_api_client/src/api/role_api.dart';
 import 'package:maki_api_client/src/api/table_api.dart';
+import 'package:maki_api_client/src/api/uploads_api.dart';
 import 'package:maki_api_client/src/api/user_api.dart';
 import 'package:maki_api_client/src/api/voucher_api.dart';
 
@@ -116,6 +121,12 @@ class MakiApiClient {
     return AuthApi(dio);
   }
 
+  /// Get DashboardApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  DashboardApi getDashboardApi() {
+    return DashboardApi(dio);
+  }
+
   /// Get DeviceApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   DeviceApi getDeviceApi() {
@@ -126,6 +137,12 @@ class MakiApiClient {
   /// by doing that all interceptors will not be executed
   HealthApi getHealthApi() {
     return HealthApi(dio);
+  }
+
+  /// Get LogApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  LogApi getLogApi() {
+    return LogApi(dio);
   }
 
   /// Get MeApi instance, base route and serializer can be overridden by a given but be careful,
@@ -152,6 +169,18 @@ class MakiApiClient {
     return OutletApi(dio);
   }
 
+  /// Get PaymentApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  PaymentApi getPaymentApi() {
+    return PaymentApi(dio);
+  }
+
+  /// Get RealtimeApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  RealtimeApi getRealtimeApi() {
+    return RealtimeApi(dio);
+  }
+
   /// Get RoleApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   RoleApi getRoleApi() {
@@ -162,6 +191,12 @@ class MakiApiClient {
   /// by doing that all interceptors will not be executed
   TableApi getTableApi() {
     return TableApi(dio);
+  }
+
+  /// Get UploadsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  UploadsApi getUploadsApi() {
+    return UploadsApi(dio);
   }
 
   /// Get UserApi instance, base route and serializer can be overridden by a given but be careful,

@@ -152,6 +152,31 @@ void main() {
     });
   });
 
+  testWidgets("shows a menu's photo, and the emoji for one without", (
+    tester,
+  ) async {
+    await openCashier(
+      tester,
+      routes: tillRoutes(
+        catalog: posCatalogJson(
+          menus: [
+            posMenuJson(imageThumbUrl: 'https://cdn.test/kopi_thumb.webp'),
+            posMenuJson(menuId: 'teh', name: 'Es teh'),
+          ],
+        ),
+      ),
+    );
+
+    final photos = tester.widgetList<Image>(
+      find.descendant(of: find.byType(MenuCard), matching: find.byType(Image)),
+    );
+    expect(photos, hasLength(1));
+    expect(
+      (photos.single.image as NetworkImage).url,
+      'https://cdn.test/kopi_thumb.webp',
+    );
+  });
+
   testWidgets("shows the stock in words, and sold out can't be picked", (
     tester,
   ) async {

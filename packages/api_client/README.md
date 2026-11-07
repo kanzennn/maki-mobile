@@ -106,14 +106,20 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**refreshSession**](doc/AuthApi.md#refreshsession) | **POST** /api/v1/auth/refresh | Exchange the refresh token for a new access token
 [*AuthApi*](doc/AuthApi.md) | [**resetPassword**](doc/AuthApi.md#resetpassword) | **POST** /api/v1/auth/password/reset | Choose a new password with the emailed link&#39;s token
 [*AuthApi*](doc/AuthApi.md) | [**verifyEmail**](doc/AuthApi.md#verifyemail) | **POST** /api/v1/auth/email/verify | Confirm an email address with the emailed link&#39;s token
+[*DashboardApi*](doc/DashboardApi.md) | [**getOutletDashboard**](doc/DashboardApi.md#getoutletdashboard) | **GET** /api/v1/outlets/{oid}/dashboard | The outlet&#39;s dashboard
+[*DashboardApi*](doc/DashboardApi.md) | [**getOwnerDashboard**](doc/DashboardApi.md#getownerdashboard) | **GET** /api/v1/owner/dashboard | The dashboard of every outlet
 [*DeviceApi*](doc/DeviceApi.md) | [**activateDevice**](doc/DeviceApi.md#activatedevice) | **POST** /api/v1/outlets/{oid}/devices | Make this device one of the outlet&#39;s cashiers
 [*DeviceApi*](doc/DeviceApi.md) | [**listDevices**](doc/DeviceApi.md#listdevices) | **GET** /api/v1/outlets/{oid}/devices | The outlet&#39;s cashier devices
 [*DeviceApi*](doc/DeviceApi.md) | [**revokeDevice**](doc/DeviceApi.md#revokedevice) | **DELETE** /api/v1/outlets/{oid}/devices/{did} | Revoke a device
 [*HealthApi*](doc/HealthApi.md) | [**getHealthz**](doc/HealthApi.md#gethealthz) | **GET** /healthz | Liveness probe
 [*HealthApi*](doc/HealthApi.md) | [**getReadyz**](doc/HealthApi.md#getreadyz) | **GET** /readyz | Readiness probe
+[*LogApi*](doc/LogApi.md) | [**listOutletLogs**](doc/LogApi.md#listoutletlogs) | **GET** /api/v1/outlets/{oid}/logs | The outlet&#39;s Log Action
+[*LogApi*](doc/LogApi.md) | [**listOwnerLogs**](doc/LogApi.md#listownerlogs) | **GET** /api/v1/owner/logs | The Log Action of every outlet
 [*MeApi*](doc/MeApi.md) | [**changeEmail**](doc/MeApi.md#changeemail) | **PUT** /api/v1/me/email | Start changing the signed-in user&#39;s email address
 [*MeApi*](doc/MeApi.md) | [**changePassword**](doc/MeApi.md#changepassword) | **PUT** /api/v1/me/password | Change the signed-in user&#39;s password
 [*MeApi*](doc/MeApi.md) | [**getMe**](doc/MeApi.md#getme) | **GET** /api/v1/me | The signed-in user
+[*MeApi*](doc/MeApi.md) | [**removeMyPhoto**](doc/MeApi.md#removemyphoto) | **DELETE** /api/v1/me/photo | Remove the signed-in user&#39;s profile photo
+[*MeApi*](doc/MeApi.md) | [**setMyPhoto**](doc/MeApi.md#setmyphoto) | **PUT** /api/v1/me/photo | Change the signed-in user&#39;s profile photo
 [*MeApi*](doc/MeApi.md) | [**updateMe**](doc/MeApi.md#updateme) | **PATCH** /api/v1/me | Change the signed-in user&#39;s own settings
 [*MenuApi*](doc/MenuApi.md) | [**adjustStock**](doc/MenuApi.md#adjuststock) | **POST** /api/v1/outlets/{oid}/menus/{mid}/stock-adjustments | Add, take away or count a menu&#39;s stock
 [*MenuApi*](doc/MenuApi.md) | [**createCategory**](doc/MenuApi.md#createcategory) | **POST** /api/v1/outlets/{oid}/categories | Create a category
@@ -143,6 +149,10 @@ Class | Method | HTTP request | Description
 [*OutletApi*](doc/OutletApi.md) | [**listOutlets**](doc/OutletApi.md#listoutlets) | **GET** /api/v1/outlets | List the outlets
 [*OutletApi*](doc/OutletApi.md) | [**setOutletStatus**](doc/OutletApi.md#setoutletstatus) | **PATCH** /api/v1/outlets/{oid}/status | Activate or deactivate an outlet
 [*OutletApi*](doc/OutletApi.md) | [**updateOutlet**](doc/OutletApi.md#updateoutlet) | **PUT** /api/v1/outlets/{oid} | Change an outlet
+[*PaymentApi*](doc/PaymentApi.md) | [**listPaymentMethods**](doc/PaymentApi.md#listpaymentmethods) | **GET** /api/v1/outlets/{oid}/payment-methods | The outlet&#39;s Payment Control
+[*PaymentApi*](doc/PaymentApi.md) | [**setPaymentMethods**](doc/PaymentApi.md#setpaymentmethods) | **PUT** /api/v1/outlets/{oid}/payment-methods | Turn the outlet&#39;s payment methods on or off
+[*RealtimeApi*](doc/RealtimeApi.md) | [**connectRealtime**](doc/RealtimeApi.md#connectrealtime) | **GET** /api/v1/outlets/{oid}/realtime | The outlet&#39;s live messages, over a WebSocket
+[*RealtimeApi*](doc/RealtimeApi.md) | [**createRealtimeTicket**](doc/RealtimeApi.md#createrealtimeticket) | **POST** /api/v1/outlets/{oid}/realtime/ticket | A ticket to connect to the outlet&#39;s live messages
 [*RoleApi*](doc/RoleApi.md) | [**createRole**](doc/RoleApi.md#createrole) | **POST** /api/v1/outlets/{oid}/roles | Create a role
 [*RoleApi*](doc/RoleApi.md) | [**deleteRole**](doc/RoleApi.md#deleterole) | **DELETE** /api/v1/outlets/{oid}/roles/{rid} | Delete a role nobody holds
 [*RoleApi*](doc/RoleApi.md) | [**getRole**](doc/RoleApi.md#getrole) | **GET** /api/v1/outlets/{oid}/roles/{rid} | One role, with the users who hold it
@@ -172,6 +182,7 @@ Class | Method | HTTP request | Description
 [*TableApi*](doc/TableApi.md) | [**updateArea**](doc/TableApi.md#updatearea) | **PUT** /api/v1/outlets/{oid}/areas/{aid} | Rename an area
 [*TableApi*](doc/TableApi.md) | [**updateTable**](doc/TableApi.md#updatetable) | **PUT** /api/v1/outlets/{oid}/tables/{tid} | Change a table
 [*TableApi*](doc/TableApi.md) | [**updateTableSchedule**](doc/TableApi.md#updatetableschedule) | **PUT** /api/v1/outlets/{oid}/table-schedules/{sid} | Change a schedule
+[*UploadsApi*](doc/UploadsApi.md) | [**presignUpload**](doc/UploadsApi.md#presignupload) | **POST** /api/v1/uploads/presign | Ask for a place to upload a photo to
 [*UserApi*](doc/UserApi.md) | [**createStaff**](doc/UserApi.md#createstaff) | **POST** /api/v1/outlets/{oid}/users | Create a Manager or staff account
 [*UserApi*](doc/UserApi.md) | [**deleteStaff**](doc/UserApi.md#deletestaff) | **DELETE** /api/v1/outlets/{oid}/users/{uid} | Delete an account
 [*UserApi*](doc/UserApi.md) | [**getStaff**](doc/UserApi.md#getstaff) | **GET** /api/v1/outlets/{oid}/users/{uid} | One of the outlet&#39;s users
@@ -192,6 +203,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ActionLog](doc/ActionLog.md)
+ - [ActionLogDevice](doc/ActionLogDevice.md)
+ - [ActionLogList](doc/ActionLogList.md)
+ - [ActionLogOutlet](doc/ActionLogOutlet.md)
+ - [ActionLogUser](doc/ActionLogUser.md)
  - [ActivateDeviceRequest](doc/ActivateDeviceRequest.md)
  - [ActivatedDevice](doc/ActivatedDevice.md)
  - [ActiveRequest](doc/ActiveRequest.md)
@@ -211,6 +227,16 @@ Class | Method | HTTP request | Description
  - [CreateOrderPayment](doc/CreateOrderPayment.md)
  - [CreateOrderRequest](doc/CreateOrderRequest.md)
  - [CreateStaffRequest](doc/CreateStaffRequest.md)
+ - [Dashboard](doc/Dashboard.md)
+ - [DashboardCashiersInner](doc/DashboardCashiersInner.md)
+ - [DashboardDaysInner](doc/DashboardDaysInner.md)
+ - [DashboardHoursInner](doc/DashboardHoursInner.md)
+ - [DashboardLowStockInner](doc/DashboardLowStockInner.md)
+ - [DashboardOutletsInner](doc/DashboardOutletsInner.md)
+ - [DashboardPaymentMethodsInner](doc/DashboardPaymentMethodsInner.md)
+ - [DashboardSummary](doc/DashboardSummary.md)
+ - [DashboardTablesInner](doc/DashboardTablesInner.md)
+ - [DashboardTopMenusInner](doc/DashboardTopMenusInner.md)
  - [Decoration](doc/Decoration.md)
  - [DecorationKind](doc/DecorationKind.md)
  - [DeleteOutletRequest](doc/DeleteOutletRequest.md)
@@ -248,7 +274,9 @@ Class | Method | HTTP request | Description
  - [OutletList](doc/OutletList.md)
  - [OutletStatusRequest](doc/OutletStatusRequest.md)
  - [OutletSummary](doc/OutletSummary.md)
+ - [PaymentControlMethod](doc/PaymentControlMethod.md)
  - [PaymentMethod](doc/PaymentMethod.md)
+ - [PaymentMethods](doc/PaymentMethods.md)
  - [PermissionCatalog](doc/PermissionCatalog.md)
  - [PermissionGroup](doc/PermissionGroup.md)
  - [Placement](doc/Placement.md)
@@ -258,6 +286,8 @@ Class | Method | HTTP request | Description
  - [PosDeviceInfo](doc/PosDeviceInfo.md)
  - [PosMenu](doc/PosMenu.md)
  - [PosOutlet](doc/PosOutlet.md)
+ - [PresignUploadRequest](doc/PresignUploadRequest.md)
+ - [RealtimeTicket](doc/RealtimeTicket.md)
  - [RefreshRequest](doc/RefreshRequest.md)
  - [ResetPasswordRequest](doc/ResetPasswordRequest.md)
  - [ResetStaffPasswordRequest](doc/ResetStaffPasswordRequest.md)
@@ -274,6 +304,9 @@ Class | Method | HTTP request | Description
  - [ScheduleTable](doc/ScheduleTable.md)
  - [Seated](doc/Seated.md)
  - [Session](doc/Session.md)
+ - [SetPaymentMethodsRequest](doc/SetPaymentMethodsRequest.md)
+ - [SetPaymentMethodsRequestMethodsInner](doc/SetPaymentMethodsRequestMethodsInner.md)
+ - [SetPhotoRequest](doc/SetPhotoRequest.md)
  - [Staff](doc/Staff.md)
  - [StaffList](doc/StaffList.md)
  - [StaffRole](doc/StaffRole.md)
@@ -293,6 +326,7 @@ Class | Method | HTTP request | Description
  - [TokenRequest](doc/TokenRequest.md)
  - [UpdateMeRequest](doc/UpdateMeRequest.md)
  - [UpdateStaffRequest](doc/UpdateStaffRequest.md)
+ - [UploadTicket](doc/UploadTicket.md)
  - [UserRef](doc/UserRef.md)
  - [ValidateVoucherRequest](doc/ValidateVoucherRequest.md)
  - [VoidOrderRequest](doc/VoidOrderRequest.md)

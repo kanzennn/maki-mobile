@@ -13,6 +13,8 @@ abstract class _$MeCWProxy {
 
   Me name(String name);
 
+  Me photoUrl(String? photoUrl);
+
   Me email(String? email);
 
   Me emailVerified(bool emailVerified);
@@ -45,6 +47,7 @@ abstract class _$MeCWProxy {
     String userId,
     String username,
     String name,
+    String? photoUrl,
     String? email,
     bool emailVerified,
     String? pendingEmail,
@@ -73,6 +76,9 @@ class _$MeCWProxyImpl implements _$MeCWProxy {
 
   @override
   Me name(String name) => this(name: name);
+
+  @override
+  Me photoUrl(String? photoUrl) => this(photoUrl: photoUrl);
 
   @override
   Me email(String? email) => this(email: email);
@@ -119,6 +125,7 @@ class _$MeCWProxyImpl implements _$MeCWProxy {
     Object? userId = const $CopyWithPlaceholder(),
     Object? username = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
+    Object? photoUrl = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
     Object? emailVerified = const $CopyWithPlaceholder(),
     Object? pendingEmail = const $CopyWithPlaceholder(),
@@ -144,6 +151,10 @@ class _$MeCWProxyImpl implements _$MeCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
+      photoUrl: photoUrl == const $CopyWithPlaceholder()
+          ? _value.photoUrl
+          // ignore: cast_nullable_to_non_nullable
+          : photoUrl as String?,
       email: email == const $CopyWithPlaceholder()
           ? _value.email
           // ignore: cast_nullable_to_non_nullable
@@ -212,6 +223,7 @@ Me _$MeFromJson(Map<String, dynamic> json) => $checkedCreate(
         'user_id',
         'username',
         'name',
+        'photo_url',
         'email',
         'email_verified',
         'pending_email',
@@ -229,6 +241,7 @@ Me _$MeFromJson(Map<String, dynamic> json) => $checkedCreate(
       userId: $checkedConvert('user_id', (v) => v as String),
       username: $checkedConvert('username', (v) => v as String),
       name: $checkedConvert('name', (v) => v as String),
+      photoUrl: $checkedConvert('photo_url', (v) => v as String?),
       email: $checkedConvert('email', (v) => v as String?),
       emailVerified: $checkedConvert('email_verified', (v) => v as bool),
       pendingEmail: $checkedConvert('pending_email', (v) => v as String?),
@@ -256,6 +269,7 @@ Me _$MeFromJson(Map<String, dynamic> json) => $checkedCreate(
   },
   fieldKeyMap: const {
     'userId': 'user_id',
+    'photoUrl': 'photo_url',
     'emailVerified': 'email_verified',
     'pendingEmail': 'pending_email',
     'isOwner': 'is_owner',
@@ -269,6 +283,7 @@ Map<String, dynamic> _$MeToJson(Me instance) => <String, dynamic>{
   'user_id': instance.userId,
   'username': instance.username,
   'name': instance.name,
+  'photo_url': instance.photoUrl,
   'email': instance.email,
   'email_verified': instance.emailVerified,
   'pending_email': instance.pendingEmail,

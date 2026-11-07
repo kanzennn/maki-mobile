@@ -20,6 +20,10 @@ class UpdateStaffRequest {
   /// Returns a new [UpdateStaffRequest] instance.
   UpdateStaffRequest({
 
+     this.uploadKey,
+
+     this.removePhoto,
+
     required  this.name,
 
      this.email,
@@ -30,6 +34,32 @@ class UpdateStaffRequest {
 
      this.isManager = false,
   });
+
+      /// A finished upload, to become the account's photo; the old one shows until the worker is done.
+  @JsonKey(
+    
+    name: r'upload_key',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? uploadKey;
+
+
+
+      /// Takes the photo away. `upload_key` wins if both are sent.
+  @JsonKey(
+    
+    name: r'remove_photo',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? removePhoto;
+
+
 
   @JsonKey(
     
@@ -96,6 +126,8 @@ class UpdateStaffRequest {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is UpdateStaffRequest &&
+      other.uploadKey == uploadKey &&
+      other.removePhoto == removePhoto &&
       other.name == name &&
       other.email == email &&
       other.phone == phone &&
@@ -104,6 +136,8 @@ class UpdateStaffRequest {
 
     @override
     int get hashCode =>
+        (uploadKey == null ? 0 : uploadKey.hashCode) +
+        removePhoto.hashCode +
         name.hashCode +
         (email == null ? 0 : email.hashCode) +
         (phone == null ? 0 : phone.hashCode) +

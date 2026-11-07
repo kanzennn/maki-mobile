@@ -34,6 +34,22 @@ void main() {
       // TODO
     });
 
+    // Remove the signed-in user's profile photo
+    //
+    //Future removeMyPhoto() async
+    test('test removeMyPhoto', () async {
+      // TODO
+    });
+
+    // Change the signed-in user's profile photo
+    //
+    // Anyone may change their own photo. `upload_key` is a finished upload from `POST /api/v1/uploads/presign`. The worker converts it within seconds; `Me.photo_url` shows the old photo, or none, until then. 
+    //
+    //Future setMyPhoto(SetPhotoRequest setPhotoRequest) async
+    test('test setMyPhoto', () async {
+      // TODO
+    });
+
     // Change the signed-in user's own settings
     //
     // `locale` sets the user's language on every device; `null` follows the outlet's language. 

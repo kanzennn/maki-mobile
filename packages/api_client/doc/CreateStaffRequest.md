@@ -8,6 +8,7 @@ import 'package:maki_api_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**uploadKey** | **String** | A finished upload, to become the account's photo. | [optional] 
 **name** | **String** |  | 
 **username** | **String** | 3 to 32 lowercase letters, digits, dots, dashes or underscores; stored in lower case. | 
 **email** | **String** |  | [optional] 

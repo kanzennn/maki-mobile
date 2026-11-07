@@ -8,6 +8,7 @@ import 'package:maki_api_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**photoUrl** | **String** | A short-lived address of the photo; null without one. | 
 **userId** | **String** |  | 
 **name** | **String** |  | 
 **username** | **String** |  | 

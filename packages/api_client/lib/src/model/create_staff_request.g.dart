@@ -7,6 +7,8 @@ part of 'create_staff_request.dart';
 // **************************************************************************
 
 abstract class _$CreateStaffRequestCWProxy {
+  CreateStaffRequest uploadKey(String? uploadKey);
+
   CreateStaffRequest name(String name);
 
   CreateStaffRequest username(String username);
@@ -28,6 +30,7 @@ abstract class _$CreateStaffRequestCWProxy {
   /// CreateStaffRequest(...).copyWith(id: 12, name: "My name")
   /// ````
   CreateStaffRequest call({
+    String? uploadKey,
     String name,
     String username,
     String? email,
@@ -43,6 +46,9 @@ class _$CreateStaffRequestCWProxyImpl implements _$CreateStaffRequestCWProxy {
   const _$CreateStaffRequestCWProxyImpl(this._value);
 
   final CreateStaffRequest _value;
+
+  @override
+  CreateStaffRequest uploadKey(String? uploadKey) => this(uploadKey: uploadKey);
 
   @override
   CreateStaffRequest name(String name) => this(name: name);
@@ -73,6 +79,7 @@ class _$CreateStaffRequestCWProxyImpl implements _$CreateStaffRequestCWProxy {
   /// CreateStaffRequest(...).copyWith(id: 12, name: "My name")
   /// ````
   CreateStaffRequest call({
+    Object? uploadKey = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? username = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
@@ -82,6 +89,10 @@ class _$CreateStaffRequestCWProxyImpl implements _$CreateStaffRequestCWProxy {
     Object? isManager = const $CopyWithPlaceholder(),
   }) {
     return CreateStaffRequest(
+      uploadKey: uploadKey == const $CopyWithPlaceholder()
+          ? _value.uploadKey
+          // ignore: cast_nullable_to_non_nullable
+          : uploadKey as String?,
       name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
@@ -132,6 +143,7 @@ CreateStaffRequest _$CreateStaffRequestFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(json, requiredKeys: const ['name', 'username', 'password']);
         final val = CreateStaffRequest(
+          uploadKey: $checkedConvert('upload_key', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String),
           username: $checkedConvert('username', (v) => v as String),
           email: $checkedConvert('email', (v) => v as String?),
@@ -142,11 +154,16 @@ CreateStaffRequest _$CreateStaffRequestFromJson(Map<String, dynamic> json) =>
         );
         return val;
       },
-      fieldKeyMap: const {'roleId': 'role_id', 'isManager': 'is_manager'},
+      fieldKeyMap: const {
+        'uploadKey': 'upload_key',
+        'roleId': 'role_id',
+        'isManager': 'is_manager',
+      },
     );
 
 Map<String, dynamic> _$CreateStaffRequestToJson(CreateStaffRequest instance) =>
     <String, dynamic>{
+      'upload_key': ?instance.uploadKey,
       'name': instance.name,
       'username': instance.username,
       'email': ?instance.email,

@@ -20,6 +20,8 @@ class CreateStaffRequest {
   /// Returns a new [CreateStaffRequest] instance.
   CreateStaffRequest({
 
+     this.uploadKey,
+
     required  this.name,
 
     required  this.username,
@@ -34,6 +36,19 @@ class CreateStaffRequest {
 
      this.isManager = false,
   });
+
+      /// A finished upload, to become the account's photo.
+  @JsonKey(
+    
+    name: r'upload_key',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? uploadKey;
+
+
 
   @JsonKey(
     
@@ -127,6 +142,7 @@ class CreateStaffRequest {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is CreateStaffRequest &&
+      other.uploadKey == uploadKey &&
       other.name == name &&
       other.username == username &&
       other.email == email &&
@@ -137,6 +153,7 @@ class CreateStaffRequest {
 
     @override
     int get hashCode =>
+        (uploadKey == null ? 0 : uploadKey.hashCode) +
         name.hashCode +
         username.hashCode +
         (email == null ? 0 : email.hashCode) +

@@ -912,7 +912,8 @@ mixin _$CatalogMenu {
 
  String get menuId; String get categoryId; String get name;/// Whole rupiah.
  int get price; bool get trackStock; StockLevel get stock; String? get sku;/// What is left, when the stock is tracked.
- int? get stockQty;
+ int? get stockQty;/// The small photo on the CDN; null shows the category's emoji.
+ String? get photoUrl;
 /// Create a copy of CatalogMenu
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -924,20 +925,20 @@ $CatalogMenuCopyWith<CatalogMenu> get copyWith => _$CatalogMenuCopyWithImpl<Cata
 @override
 bool operator ==(Object other) {
   final _this = this as CatalogMenu;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogMenu&&(identical(other.menuId, _this.menuId) || other.menuId == _this.menuId)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.trackStock, _this.trackStock) || other.trackStock == _this.trackStock)&&(identical(other.stock, _this.stock) || other.stock == _this.stock)&&(identical(other.sku, _this.sku) || other.sku == _this.sku)&&(identical(other.stockQty, _this.stockQty) || other.stockQty == _this.stockQty));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatalogMenu&&(identical(other.menuId, _this.menuId) || other.menuId == _this.menuId)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.trackStock, _this.trackStock) || other.trackStock == _this.trackStock)&&(identical(other.stock, _this.stock) || other.stock == _this.stock)&&(identical(other.sku, _this.sku) || other.sku == _this.sku)&&(identical(other.stockQty, _this.stockQty) || other.stockQty == _this.stockQty)&&(identical(other.photoUrl, _this.photoUrl) || other.photoUrl == _this.photoUrl));
 }
 
 
 @override
 int get hashCode {
   final _this = this as CatalogMenu;
-  return Object.hash(runtimeType,_this.menuId,_this.categoryId,_this.name,_this.price,_this.trackStock,_this.stock,_this.sku,_this.stockQty);
+  return Object.hash(runtimeType,_this.menuId,_this.categoryId,_this.name,_this.price,_this.trackStock,_this.stock,_this.sku,_this.stockQty,_this.photoUrl);
 }
 
 @override
 String toString() {
   final _this = this as CatalogMenu;
-  return 'CatalogMenu(menuId: ${_this.menuId}, categoryId: ${_this.categoryId}, name: ${_this.name}, price: ${_this.price}, trackStock: ${_this.trackStock}, stock: ${_this.stock}, sku: ${_this.sku}, stockQty: ${_this.stockQty})';
+  return 'CatalogMenu(menuId: ${_this.menuId}, categoryId: ${_this.categoryId}, name: ${_this.name}, price: ${_this.price}, trackStock: ${_this.trackStock}, stock: ${_this.stock}, sku: ${_this.sku}, stockQty: ${_this.stockQty}, photoUrl: ${_this.photoUrl})';
 }
 
 
@@ -948,7 +949,7 @@ abstract mixin class $CatalogMenuCopyWith<$Res>  {
   factory $CatalogMenuCopyWith(CatalogMenu value, $Res Function(CatalogMenu) _then) = _$CatalogMenuCopyWithImpl;
 @useResult
 $Res call({
- String menuId, String categoryId, String name, int price, bool trackStock, StockLevel stock, String? sku, int? stockQty
+ String menuId, String categoryId, String name, int price, bool trackStock, StockLevel stock, String? sku, int? stockQty, String? photoUrl
 });
 
 
@@ -965,7 +966,7 @@ class _$CatalogMenuCopyWithImpl<$Res>
 
 /// Create a copy of CatalogMenu
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? menuId = null,Object? categoryId = null,Object? name = null,Object? price = null,Object? trackStock = null,Object? stock = null,Object? sku = freezed,Object? stockQty = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? menuId = null,Object? categoryId = null,Object? name = null,Object? price = null,Object? trackStock = null,Object? stock = null,Object? sku = freezed,Object? stockQty = freezed,Object? photoUrl = freezed,}) {
   return _then(CatalogMenu(
 menuId: null == menuId ? _self.menuId : menuId // ignore: cast_nullable_to_non_nullable
 as String,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
@@ -975,7 +976,8 @@ as int,trackStock: null == trackStock ? _self.trackStock : trackStock // ignore:
 as bool,stock: null == stock ? _self.stock : stock // ignore: cast_nullable_to_non_nullable
 as StockLevel,sku: freezed == sku ? _self.sku : sku // ignore: cast_nullable_to_non_nullable
 as String?,stockQty: freezed == stockQty ? _self.stockQty : stockQty // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,photoUrl: freezed == photoUrl ? _self.photoUrl : photoUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -1060,10 +1062,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty,  String? photoUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CatalogMenu() when $default != null:
-return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty);case _:
+return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty,_that.photoUrl);case _:
   return orElse();
 
 }
@@ -1081,10 +1083,10 @@ return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.track
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty,  String? photoUrl)  $default,) {final _that = this;
 switch (_that) {
 case _CatalogMenu():
-return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty);case _:
+return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty,_that.photoUrl);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1101,10 +1103,10 @@ return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.track
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String menuId,  String categoryId,  String name,  int price,  bool trackStock,  StockLevel stock,  String? sku,  int? stockQty,  String? photoUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _CatalogMenu() when $default != null:
-return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty);case _:
+return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.trackStock,_that.stock,_that.sku,_that.stockQty,_that.photoUrl);case _:
   return null;
 
 }
@@ -1116,7 +1118,7 @@ return $default(_that.menuId,_that.categoryId,_that.name,_that.price,_that.track
 
 
 class _CatalogMenu implements CatalogMenu {
-  const _CatalogMenu({required this.menuId, required this.categoryId, required this.name, required this.price, required this.trackStock, required this.stock, this.sku, this.stockQty});
+  const _CatalogMenu({required this.menuId, required this.categoryId, required this.name, required this.price, required this.trackStock, required this.stock, this.sku, this.stockQty, this.photoUrl});
   
 
 @override final  String menuId;
@@ -1129,6 +1131,8 @@ class _CatalogMenu implements CatalogMenu {
 @override final  String? sku;
 /// What is left, when the stock is tracked.
 @override final  int? stockQty;
+/// The small photo on the CDN; null shows the category's emoji.
+@override final  String? photoUrl;
 
 /// Create a copy of CatalogMenu
 /// with the given fields replaced by the non-null parameter values.
@@ -1140,18 +1144,18 @@ _$CatalogMenuCopyWith<_CatalogMenu> get copyWith => __$CatalogMenuCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogMenu&&(identical(other.menuId, menuId) || other.menuId == menuId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.trackStock, trackStock) || other.trackStock == trackStock)&&(identical(other.stock, stock) || other.stock == stock)&&(identical(other.sku, sku) || other.sku == sku)&&(identical(other.stockQty, stockQty) || other.stockQty == stockQty));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatalogMenu&&(identical(other.menuId, menuId) || other.menuId == menuId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.trackStock, trackStock) || other.trackStock == trackStock)&&(identical(other.stock, stock) || other.stock == stock)&&(identical(other.sku, sku) || other.sku == sku)&&(identical(other.stockQty, stockQty) || other.stockQty == stockQty)&&(identical(other.photoUrl, photoUrl) || other.photoUrl == photoUrl));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,menuId,categoryId,name,price,trackStock,stock,sku,stockQty);
+    return Object.hash(runtimeType,menuId,categoryId,name,price,trackStock,stock,sku,stockQty,photoUrl);
 }
 
 @override
 String toString() {
-    return 'CatalogMenu(menuId: $menuId, categoryId: $categoryId, name: $name, price: $price, trackStock: $trackStock, stock: $stock, sku: $sku, stockQty: $stockQty)';
+    return 'CatalogMenu(menuId: $menuId, categoryId: $categoryId, name: $name, price: $price, trackStock: $trackStock, stock: $stock, sku: $sku, stockQty: $stockQty, photoUrl: $photoUrl)';
 }
 
 
@@ -1162,7 +1166,7 @@ abstract mixin class _$CatalogMenuCopyWith<$Res> implements $CatalogMenuCopyWith
   factory _$CatalogMenuCopyWith(_CatalogMenu value, $Res Function(_CatalogMenu) _then) = __$CatalogMenuCopyWithImpl;
 @override @useResult
 $Res call({
- String menuId, String categoryId, String name, int price, bool trackStock, StockLevel stock, String? sku, int? stockQty
+ String menuId, String categoryId, String name, int price, bool trackStock, StockLevel stock, String? sku, int? stockQty, String? photoUrl
 });
 
 
@@ -1179,7 +1183,7 @@ class __$CatalogMenuCopyWithImpl<$Res>
 
 /// Create a copy of CatalogMenu
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? menuId = null,Object? categoryId = null,Object? name = null,Object? price = null,Object? trackStock = null,Object? stock = null,Object? sku = freezed,Object? stockQty = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? menuId = null,Object? categoryId = null,Object? name = null,Object? price = null,Object? trackStock = null,Object? stock = null,Object? sku = freezed,Object? stockQty = freezed,Object? photoUrl = freezed,}) {
   return _then(_CatalogMenu(
 menuId: null == menuId ? _self.menuId : menuId // ignore: cast_nullable_to_non_nullable
 as String,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
@@ -1189,7 +1193,8 @@ as int,trackStock: null == trackStock ? _self.trackStock : trackStock // ignore:
 as bool,stock: null == stock ? _self.stock : stock // ignore: cast_nullable_to_non_nullable
 as StockLevel,sku: freezed == sku ? _self.sku : sku // ignore: cast_nullable_to_non_nullable
 as String?,stockQty: freezed == stockQty ? _self.stockQty : stockQty // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,photoUrl: freezed == photoUrl ? _self.photoUrl : photoUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

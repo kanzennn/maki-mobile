@@ -7,6 +7,18 @@ void main() {
   // TODO add properties to the entity
 
   group(MenuInput, () {
+    // A finished upload, to become the menu's photo; the old one shows until the worker is done.
+    // String uploadKey
+    test('to test the property `uploadKey`', () async {
+      // TODO
+    });
+
+    // On PUT, takes the photo away. `upload_key` wins if both are sent.
+    // bool removeImage
+    test('to test the property `removeImage`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO

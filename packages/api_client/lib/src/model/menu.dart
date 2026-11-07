@@ -34,6 +34,8 @@ class Menu {
 
     required  this.imageUrl,
 
+    required  this.imageThumbUrl,
+
     required  this.trackStock,
 
     required  this.stockQty,
@@ -112,7 +114,7 @@ class Menu {
 
 
 
-      /// The photo on the CDN; null until photos arrive, and for a menu without one.
+      /// The 800 × 800 photo on the CDN; null for a menu without one.
   @JsonKey(
     
     name: r'image_url',
@@ -122,6 +124,19 @@ class Menu {
 
 
   final String? imageUrl;
+
+
+
+      /// The 200 × 200 photo on the CDN; null for a menu without one.
+  @JsonKey(
+    
+    name: r'image_thumb_url',
+    required: true,
+    includeIfNull: true,
+  )
+
+
+  final String? imageThumbUrl;
 
 
 
@@ -234,6 +249,7 @@ class Menu {
       other.sku == sku &&
       other.price == price &&
       other.imageUrl == imageUrl &&
+      other.imageThumbUrl == imageThumbUrl &&
       other.trackStock == trackStock &&
       other.stockQty == stockQty &&
       other.stockAlert == stockAlert &&
@@ -251,6 +267,7 @@ class Menu {
         (sku == null ? 0 : sku.hashCode) +
         price.hashCode +
         (imageUrl == null ? 0 : imageUrl.hashCode) +
+        (imageThumbUrl == null ? 0 : imageThumbUrl.hashCode) +
         trackStock.hashCode +
         stockQty.hashCode +
         (stockAlert == null ? 0 : stockAlert.hashCode) +

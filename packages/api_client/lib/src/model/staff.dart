@@ -21,6 +21,8 @@ class Staff {
   /// Returns a new [Staff] instance.
   Staff({
 
+    required  this.photoUrl,
+
     required  this.userId,
 
     required  this.name,
@@ -45,6 +47,19 @@ class Staff {
 
     required  this.updatedAt,
   });
+
+      /// A short-lived address of the photo; null without one.
+  @JsonKey(
+    
+    name: r'photo_url',
+    required: true,
+    includeIfNull: true,
+  )
+
+
+  final String? photoUrl;
+
+
 
   @JsonKey(
     
@@ -196,6 +211,7 @@ class Staff {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is Staff &&
+      other.photoUrl == photoUrl &&
       other.userId == userId &&
       other.name == name &&
       other.username == username &&
@@ -211,6 +227,7 @@ class Staff {
 
     @override
     int get hashCode =>
+        (photoUrl == null ? 0 : photoUrl.hashCode) +
         userId.hashCode +
         name.hashCode +
         username.hashCode +

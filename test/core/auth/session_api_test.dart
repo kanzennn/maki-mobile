@@ -18,6 +18,7 @@ void main() {
         userId: 'u1',
         username: 'kasir1',
         name: 'Budi',
+        photoUrl: null,
         email: 'budi@example.com',
         emailVerified: verified,
         pendingEmail: 'budi.baru@example.com',

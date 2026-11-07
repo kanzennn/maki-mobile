@@ -18,6 +18,7 @@ CatalogMenu testMenu({
   int? stockQty = 3,
   StockLevel stock = StockLevel.ok,
   String? sku,
+  String? photoUrl,
 }) => CatalogMenu(
   menuId: menuId,
   categoryId: categoryId,
@@ -27,6 +28,7 @@ CatalogMenu testMenu({
   stockQty: stockQty,
   stock: stock,
   sku: sku,
+  photoUrl: photoUrl,
 );
 
 CatalogOutlet testCatalogOutlet({
@@ -101,6 +103,7 @@ TillDevice testTill({String day = '2026-10-01', int nextNumber = 5}) =>
 // As the API sends them.
 
 Map<String, Object?> posMenuJson({
+  String? imageThumbUrl,
   String menuId = 'kopi',
   String categoryId = 'minum',
   String name = 'Kopi susu',
@@ -118,6 +121,7 @@ Map<String, Object?> posMenuJson({
   sku: sku,
   price: price,
   imageUrl: null,
+  imageThumbUrl: imageThumbUrl,
   trackStock: trackStock,
   stockQty: stockQty,
   stockAlert: stockAlert,

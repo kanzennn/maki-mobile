@@ -27,6 +27,8 @@ class Me {
 
     required  this.name,
 
+    required  this.photoUrl,
+
     required  this.email,
 
     required  this.emailVerified,
@@ -83,6 +85,19 @@ class Me {
 
 
   final String name;
+
+
+
+      /// A short-lived address of the photo; null without one.
+  @JsonKey(
+    
+    name: r'photo_url',
+    required: true,
+    includeIfNull: true,
+  )
+
+
+  final String? photoUrl;
 
 
 
@@ -231,6 +246,7 @@ class Me {
       other.userId == userId &&
       other.username == username &&
       other.name == name &&
+      other.photoUrl == photoUrl &&
       other.email == email &&
       other.emailVerified == emailVerified &&
       other.pendingEmail == pendingEmail &&
@@ -248,6 +264,7 @@ class Me {
         userId.hashCode +
         username.hashCode +
         name.hashCode +
+        (photoUrl == null ? 0 : photoUrl.hashCode) +
         (email == null ? 0 : email.hashCode) +
         emailVerified.hashCode +
         (pendingEmail == null ? 0 : pendingEmail.hashCode) +

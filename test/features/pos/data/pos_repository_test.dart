@@ -39,6 +39,20 @@ void main() {
     return (PosRepository(api, deviceTokens, outletId: 'o1'), adapter);
   }
 
+  test('follows the outlet with a new ticket, over ws', () async {
+    final (pos, adapter) = await repositoryWith({
+      'POST /api/v1/outlets/o1/realtime/ticket': (_) => (
+        200,
+        {'ticket': 'abc', 'expires_in': 30},
+      ),
+    });
+    final uri = await pos.liveSocketUri();
+    expect(uri.scheme, anyOf('ws', 'wss'));
+    expect(uri.path, '/api/v1/outlets/o1/realtime');
+    expect(uri.queryParameters, {'ticket': 'abc'});
+    expect(adapter.requests, hasLength(1));
+  });
+
   Object? body(RequestOptions request) {
     final data = request.data;
     return data is String ? jsonDecode(data) : data;

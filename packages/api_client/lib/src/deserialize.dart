@@ -1,3 +1,8 @@
+import 'package:maki_api_client/src/model/action_log.dart';
+import 'package:maki_api_client/src/model/action_log_device.dart';
+import 'package:maki_api_client/src/model/action_log_list.dart';
+import 'package:maki_api_client/src/model/action_log_outlet.dart';
+import 'package:maki_api_client/src/model/action_log_user.dart';
 import 'package:maki_api_client/src/model/activate_device_request.dart';
 import 'package:maki_api_client/src/model/activated_device.dart';
 import 'package:maki_api_client/src/model/active_request.dart';
@@ -17,6 +22,16 @@ import 'package:maki_api_client/src/model/create_order_item.dart';
 import 'package:maki_api_client/src/model/create_order_payment.dart';
 import 'package:maki_api_client/src/model/create_order_request.dart';
 import 'package:maki_api_client/src/model/create_staff_request.dart';
+import 'package:maki_api_client/src/model/dashboard.dart';
+import 'package:maki_api_client/src/model/dashboard_cashiers_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_days_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_hours_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_low_stock_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_outlets_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_payment_methods_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_summary.dart';
+import 'package:maki_api_client/src/model/dashboard_tables_inner.dart';
+import 'package:maki_api_client/src/model/dashboard_top_menus_inner.dart';
 import 'package:maki_api_client/src/model/decoration.dart';
 import 'package:maki_api_client/src/model/delete_outlet_request.dart';
 import 'package:maki_api_client/src/model/device.dart';
@@ -50,6 +65,8 @@ import 'package:maki_api_client/src/model/outlet_input.dart';
 import 'package:maki_api_client/src/model/outlet_list.dart';
 import 'package:maki_api_client/src/model/outlet_status_request.dart';
 import 'package:maki_api_client/src/model/outlet_summary.dart';
+import 'package:maki_api_client/src/model/payment_control_method.dart';
+import 'package:maki_api_client/src/model/payment_methods.dart';
 import 'package:maki_api_client/src/model/permission_catalog.dart';
 import 'package:maki_api_client/src/model/permission_group.dart';
 import 'package:maki_api_client/src/model/placement.dart';
@@ -59,6 +76,8 @@ import 'package:maki_api_client/src/model/pos_device.dart';
 import 'package:maki_api_client/src/model/pos_device_info.dart';
 import 'package:maki_api_client/src/model/pos_menu.dart';
 import 'package:maki_api_client/src/model/pos_outlet.dart';
+import 'package:maki_api_client/src/model/presign_upload_request.dart';
+import 'package:maki_api_client/src/model/realtime_ticket.dart';
 import 'package:maki_api_client/src/model/refresh_request.dart';
 import 'package:maki_api_client/src/model/reset_password_request.dart';
 import 'package:maki_api_client/src/model/reset_staff_password_request.dart';
@@ -73,6 +92,9 @@ import 'package:maki_api_client/src/model/schedule_list.dart';
 import 'package:maki_api_client/src/model/schedule_table.dart';
 import 'package:maki_api_client/src/model/seated.dart';
 import 'package:maki_api_client/src/model/session.dart';
+import 'package:maki_api_client/src/model/set_payment_methods_request.dart';
+import 'package:maki_api_client/src/model/set_payment_methods_request_methods_inner.dart';
+import 'package:maki_api_client/src/model/set_photo_request.dart';
 import 'package:maki_api_client/src/model/staff.dart';
 import 'package:maki_api_client/src/model/staff_list.dart';
 import 'package:maki_api_client/src/model/staff_role.dart';
@@ -89,6 +111,7 @@ import 'package:maki_api_client/src/model/table_list.dart';
 import 'package:maki_api_client/src/model/token_request.dart';
 import 'package:maki_api_client/src/model/update_me_request.dart';
 import 'package:maki_api_client/src/model/update_staff_request.dart';
+import 'package:maki_api_client/src/model/upload_ticket.dart';
 import 'package:maki_api_client/src/model/user_ref.dart';
 import 'package:maki_api_client/src/model/validate_voucher_request.dart';
 import 'package:maki_api_client/src/model/void_order_request.dart';
@@ -119,6 +142,16 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return (valueString == 'true' || valueString == '1') as ReturnType;
         case 'double':
           return (value is double ? value : double.parse('$value')) as ReturnType;
+        case 'ActionLog':
+          return ActionLog.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ActionLogDevice':
+          return ActionLogDevice.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ActionLogList':
+          return ActionLogList.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ActionLogOutlet':
+          return ActionLogOutlet.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ActionLogUser':
+          return ActionLogUser.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'ActivateDeviceRequest':
           return ActivateDeviceRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'ActivatedDevice':
@@ -157,6 +190,26 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return CreateOrderRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'CreateStaffRequest':
           return CreateStaffRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Dashboard':
+          return Dashboard.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardCashiersInner':
+          return DashboardCashiersInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardDaysInner':
+          return DashboardDaysInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardHoursInner':
+          return DashboardHoursInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardLowStockInner':
+          return DashboardLowStockInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardOutletsInner':
+          return DashboardOutletsInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardPaymentMethodsInner':
+          return DashboardPaymentMethodsInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardSummary':
+          return DashboardSummary.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardTablesInner':
+          return DashboardTablesInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DashboardTopMenusInner':
+          return DashboardTopMenusInner.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Decoration':
           return Decoration.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'DecorationKind':
@@ -235,9 +288,13 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return OutletStatusRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'OutletSummary':
           return OutletSummary.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'PaymentControlMethod':
+          return PaymentControlMethod.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'PaymentMethod':
           
           
+        case 'PaymentMethods':
+          return PaymentMethods.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'PermissionCatalog':
           return PermissionCatalog.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'PermissionGroup':
@@ -256,6 +313,10 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return PosMenu.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'PosOutlet':
           return PosOutlet.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'PresignUploadRequest':
+          return PresignUploadRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RealtimeTicket':
+          return RealtimeTicket.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'RefreshRequest':
           return RefreshRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'ResetPasswordRequest':
@@ -290,6 +351,12 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return Seated.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Session':
           return Session.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SetPaymentMethodsRequest':
+          return SetPaymentMethodsRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SetPaymentMethodsRequestMethodsInner':
+          return SetPaymentMethodsRequestMethodsInner.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SetPhotoRequest':
+          return SetPhotoRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Staff':
           return Staff.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'StaffList':
@@ -331,6 +398,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return UpdateMeRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UpdateStaffRequest':
           return UpdateStaffRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UploadTicket':
+          return UploadTicket.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UserRef':
           return UserRef.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'ValidateVoucherRequest':

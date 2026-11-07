@@ -7,6 +7,10 @@ part of 'menu_input.dart';
 // **************************************************************************
 
 abstract class _$MenuInputCWProxy {
+  MenuInput uploadKey(String? uploadKey);
+
+  MenuInput removeImage(bool? removeImage);
+
   MenuInput name(String name);
 
   MenuInput categoryId(String categoryId);
@@ -32,6 +36,8 @@ abstract class _$MenuInputCWProxy {
   /// MenuInput(...).copyWith(id: 12, name: "My name")
   /// ````
   MenuInput call({
+    String? uploadKey,
+    bool? removeImage,
     String name,
     String categoryId,
     int price,
@@ -49,6 +55,12 @@ class _$MenuInputCWProxyImpl implements _$MenuInputCWProxy {
   const _$MenuInputCWProxyImpl(this._value);
 
   final MenuInput _value;
+
+  @override
+  MenuInput uploadKey(String? uploadKey) => this(uploadKey: uploadKey);
+
+  @override
+  MenuInput removeImage(bool? removeImage) => this(removeImage: removeImage);
 
   @override
   MenuInput name(String name) => this(name: name);
@@ -85,6 +97,8 @@ class _$MenuInputCWProxyImpl implements _$MenuInputCWProxy {
   /// MenuInput(...).copyWith(id: 12, name: "My name")
   /// ````
   MenuInput call({
+    Object? uploadKey = const $CopyWithPlaceholder(),
+    Object? removeImage = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? categoryId = const $CopyWithPlaceholder(),
     Object? price = const $CopyWithPlaceholder(),
@@ -96,6 +110,14 @@ class _$MenuInputCWProxyImpl implements _$MenuInputCWProxy {
     Object? isActive = const $CopyWithPlaceholder(),
   }) {
     return MenuInput(
+      uploadKey: uploadKey == const $CopyWithPlaceholder()
+          ? _value.uploadKey
+          // ignore: cast_nullable_to_non_nullable
+          : uploadKey as String?,
+      removeImage: removeImage == const $CopyWithPlaceholder()
+          ? _value.removeImage
+          // ignore: cast_nullable_to_non_nullable
+          : removeImage as bool?,
       name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
@@ -152,6 +174,8 @@ MenuInput _$MenuInputFromJson(Map<String, dynamic> json) => $checkedCreate(
   ($checkedConvert) {
     $checkKeys(json, requiredKeys: const ['name', 'category_id', 'price']);
     final val = MenuInput(
+      uploadKey: $checkedConvert('upload_key', (v) => v as String?),
+      removeImage: $checkedConvert('remove_image', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String),
       categoryId: $checkedConvert('category_id', (v) => v as String),
       price: $checkedConvert('price', (v) => (v as num).toInt()),
@@ -168,6 +192,8 @@ MenuInput _$MenuInputFromJson(Map<String, dynamic> json) => $checkedCreate(
     return val;
   },
   fieldKeyMap: const {
+    'uploadKey': 'upload_key',
+    'removeImage': 'remove_image',
     'categoryId': 'category_id',
     'trackStock': 'track_stock',
     'initialStock': 'initial_stock',
@@ -177,6 +203,8 @@ MenuInput _$MenuInputFromJson(Map<String, dynamic> json) => $checkedCreate(
 );
 
 Map<String, dynamic> _$MenuInputToJson(MenuInput instance) => <String, dynamic>{
+  'upload_key': ?instance.uploadKey,
+  'remove_image': ?instance.removeImage,
   'name': instance.name,
   'category_id': instance.categoryId,
   'price': instance.price,

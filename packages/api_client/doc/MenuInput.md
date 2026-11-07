@@ -8,6 +8,8 @@ import 'package:maki_api_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**uploadKey** | **String** | A finished upload, to become the menu's photo; the old one shows until the worker is done. | [optional] 
+**removeImage** | **bool** | On PUT, takes the photo away. `upload_key` wins if both are sent. | [optional] 
 **name** | **String** |  | 
 **categoryId** | **String** |  | 
 **price** | **int** | Rupiah. | 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **userId** | **String** |  | 
 **username** | **String** |  | 
 **name** | **String** |  | 
+**photoUrl** | **String** | A short-lived address of the photo; null without one. | 
 **email** | **String** |  | 
 **emailVerified** | **bool** |  | 
 **pendingEmail** | **String** | An address waiting to be confirmed, after `PUT /me/email`. | 

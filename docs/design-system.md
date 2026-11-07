@@ -52,7 +52,7 @@ Layouts follow the window width (`context.windowSize`), never the device:
   (*K01 · Kasir depan*) and the outlet's date — and the tiles with their
   *N item* count.
 - **Menu cards:** the picture (the category's emoji on `surface-container`
-  until menus have photos), the name in two lines at most, the stock in
+  for a menu without a photo, while it loads, or when it won't), the name in two lines at most, the stock in
   words (*Tersedia 12*, *Selalu tersedia*, *Habis*), the price in
   `price-lg`. Low stock is the `warning-container` badge at the picture's
   top left and its count in `on-warning-container`; sold out is the card on

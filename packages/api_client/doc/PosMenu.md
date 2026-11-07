@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **description** | **String** |  | 
 **sku** | **String** |  | 
 **price** | **int** | Rupiah. | 
-**imageUrl** | **String** | The photo's address, with the upload milestone; null until then. | 
+**imageUrl** | **String** | The 800 × 800 photo on the CDN; null for a menu without one. | 
+**imageThumbUrl** | **String** | The 200 × 200 photo on the CDN; null for a menu without one. | 
 **trackStock** | **bool** |  | 
 **stockQty** | **int** | The count, the most one order may take; null when the stock isn't tracked, always available. | 
 **stockAlert** | **int** |  | 

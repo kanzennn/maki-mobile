@@ -256,6 +256,35 @@ class MenuGrid extends StatelessWidget {
 /// warning badge and its count in `on-warning-container`; sold out is the
 /// card on `surface-variant`, the picture in grayscale, and can't be
 /// picked. A menu in the order says how many.
+/// A menu's photo, or the category's emoji: without one, while it loads, and
+/// when it won't, as with no connection.
+class _MenuPicture extends StatelessWidget {
+  const _MenuPicture(this.url, this.icon, {required this.gray});
+
+  final String? url;
+  final String? icon;
+
+  /// Pushed back in grey, as sold out is.
+  final bool gray;
+
+  Widget _toned(Widget picture) =>
+      gray ? ColorFiltered(colorFilter: _grayscale, child: picture) : picture;
+
+  @override
+  Widget build(BuildContext context) {
+    final placeholder = Center(child: _toned(CategoryEmoji(icon, size: 40)));
+    final url = this.url;
+    if (url == null) return placeholder;
+    return Image.network(
+      url,
+      fit: BoxFit.cover,
+      frameBuilder: (context, child, frame, loadedAtOnce) =>
+          frame == null && !loadedAtOnce ? placeholder : _toned(child),
+      errorBuilder: (context, error, stack) => placeholder,
+    );
+  }
+}
+
 class MenuCard extends StatelessWidget {
   const MenuCard({
     required this.menu,
@@ -315,14 +344,7 @@ class MenuCard extends StatelessWidget {
                     Positioned.fill(
                       child: ColoredBox(
                         color: theme.colorScheme.surfaceContainer,
-                        child: Center(
-                          child: out
-                              ? ColorFiltered(
-                                  colorFilter: _grayscale,
-                                  child: CategoryEmoji(icon, size: 40),
-                                )
-                              : CategoryEmoji(icon, size: 40),
-                        ),
+                        child: _MenuPicture(menu.photoUrl, icon, gray: out),
                       ),
                     ),
                     if (low)

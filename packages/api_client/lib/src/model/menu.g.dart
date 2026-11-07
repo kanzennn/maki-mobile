@@ -19,6 +19,8 @@ abstract class _$MenuCWProxy {
 
   Menu imageUrl(String? imageUrl);
 
+  Menu imageThumbUrl(String? imageThumbUrl);
+
   Menu trackStock(bool trackStock);
 
   Menu stockQty(int stockQty);
@@ -48,6 +50,7 @@ abstract class _$MenuCWProxy {
     String? sku,
     int price,
     String? imageUrl,
+    String? imageThumbUrl,
     bool trackStock,
     int stockQty,
     int? stockAlert,
@@ -82,6 +85,10 @@ class _$MenuCWProxyImpl implements _$MenuCWProxy {
 
   @override
   Menu imageUrl(String? imageUrl) => this(imageUrl: imageUrl);
+
+  @override
+  Menu imageThumbUrl(String? imageThumbUrl) =>
+      this(imageThumbUrl: imageThumbUrl);
 
   @override
   Menu trackStock(bool trackStock) => this(trackStock: trackStock);
@@ -121,6 +128,7 @@ class _$MenuCWProxyImpl implements _$MenuCWProxy {
     Object? sku = const $CopyWithPlaceholder(),
     Object? price = const $CopyWithPlaceholder(),
     Object? imageUrl = const $CopyWithPlaceholder(),
+    Object? imageThumbUrl = const $CopyWithPlaceholder(),
     Object? trackStock = const $CopyWithPlaceholder(),
     Object? stockQty = const $CopyWithPlaceholder(),
     Object? stockAlert = const $CopyWithPlaceholder(),
@@ -155,6 +163,10 @@ class _$MenuCWProxyImpl implements _$MenuCWProxy {
           ? _value.imageUrl
           // ignore: cast_nullable_to_non_nullable
           : imageUrl as String?,
+      imageThumbUrl: imageThumbUrl == const $CopyWithPlaceholder()
+          ? _value.imageThumbUrl
+          // ignore: cast_nullable_to_non_nullable
+          : imageThumbUrl as String?,
       trackStock: trackStock == const $CopyWithPlaceholder()
           ? _value.trackStock
           // ignore: cast_nullable_to_non_nullable
@@ -214,6 +226,7 @@ Menu _$MenuFromJson(Map<String, dynamic> json) => $checkedCreate(
         'sku',
         'price',
         'image_url',
+        'image_thumb_url',
         'track_stock',
         'stock_qty',
         'stock_alert',
@@ -231,6 +244,7 @@ Menu _$MenuFromJson(Map<String, dynamic> json) => $checkedCreate(
       sku: $checkedConvert('sku', (v) => v as String?),
       price: $checkedConvert('price', (v) => (v as num).toInt()),
       imageUrl: $checkedConvert('image_url', (v) => v as String?),
+      imageThumbUrl: $checkedConvert('image_thumb_url', (v) => v as String?),
       trackStock: $checkedConvert('track_stock', (v) => v as bool),
       stockQty: $checkedConvert('stock_qty', (v) => (v as num).toInt()),
       stockAlert: $checkedConvert('stock_alert', (v) => (v as num?)?.toInt()),
@@ -257,6 +271,7 @@ Menu _$MenuFromJson(Map<String, dynamic> json) => $checkedCreate(
   fieldKeyMap: const {
     'menuId': 'menu_id',
     'imageUrl': 'image_url',
+    'imageThumbUrl': 'image_thumb_url',
     'trackStock': 'track_stock',
     'stockQty': 'stock_qty',
     'stockAlert': 'stock_alert',
@@ -274,6 +289,7 @@ Map<String, dynamic> _$MenuToJson(Menu instance) => <String, dynamic>{
   'sku': instance.sku,
   'price': instance.price,
   'image_url': instance.imageUrl,
+  'image_thumb_url': instance.imageThumbUrl,
   'track_stock': instance.trackStock,
   'stock_qty': instance.stockQty,
   'stock_alert': instance.stockAlert,

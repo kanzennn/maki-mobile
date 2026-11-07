@@ -7,6 +7,8 @@ part of 'staff.dart';
 // **************************************************************************
 
 abstract class _$StaffCWProxy {
+  Staff photoUrl(String? photoUrl);
+
   Staff userId(String userId);
 
   Staff name(String name);
@@ -38,6 +40,7 @@ abstract class _$StaffCWProxy {
   /// Staff(...).copyWith(id: 12, name: "My name")
   /// ````
   Staff call({
+    String? photoUrl,
     String userId,
     String name,
     String username,
@@ -58,6 +61,9 @@ class _$StaffCWProxyImpl implements _$StaffCWProxy {
   const _$StaffCWProxyImpl(this._value);
 
   final Staff _value;
+
+  @override
+  Staff photoUrl(String? photoUrl) => this(photoUrl: photoUrl);
 
   @override
   Staff userId(String userId) => this(userId: userId);
@@ -104,6 +110,7 @@ class _$StaffCWProxyImpl implements _$StaffCWProxy {
   /// Staff(...).copyWith(id: 12, name: "My name")
   /// ````
   Staff call({
+    Object? photoUrl = const $CopyWithPlaceholder(),
     Object? userId = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? username = const $CopyWithPlaceholder(),
@@ -118,6 +125,10 @@ class _$StaffCWProxyImpl implements _$StaffCWProxy {
     Object? updatedAt = const $CopyWithPlaceholder(),
   }) {
     return Staff(
+      photoUrl: photoUrl == const $CopyWithPlaceholder()
+          ? _value.photoUrl
+          // ignore: cast_nullable_to_non_nullable
+          : photoUrl as String?,
       userId: userId == const $CopyWithPlaceholder()
           ? _value.userId
           // ignore: cast_nullable_to_non_nullable
@@ -187,6 +198,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
     $checkKeys(
       json,
       requiredKeys: const [
+        'photo_url',
         'user_id',
         'name',
         'username',
@@ -202,6 +214,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
       ],
     );
     final val = Staff(
+      photoUrl: $checkedConvert('photo_url', (v) => v as String?),
       userId: $checkedConvert('user_id', (v) => v as String),
       name: $checkedConvert('name', (v) => v as String),
       username: $checkedConvert('username', (v) => v as String),
@@ -236,6 +249,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
     return val;
   },
   fieldKeyMap: const {
+    'photoUrl': 'photo_url',
     'userId': 'user_id',
     'isManager': 'is_manager',
     'mustChangePassword': 'must_change_password',
@@ -246,6 +260,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
 );
 
 Map<String, dynamic> _$StaffToJson(Staff instance) => <String, dynamic>{
+  'photo_url': instance.photoUrl,
   'user_id': instance.userId,
   'name': instance.name,
   'username': instance.username,

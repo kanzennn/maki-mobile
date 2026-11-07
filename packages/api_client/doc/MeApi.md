@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**changeEmail**](MeApi.md#changeemail) | **PUT** /api/v1/me/email | Start changing the signed-in user&#39;s email address
 [**changePassword**](MeApi.md#changepassword) | **PUT** /api/v1/me/password | Change the signed-in user&#39;s password
 [**getMe**](MeApi.md#getme) | **GET** /api/v1/me | The signed-in user
+[**removeMyPhoto**](MeApi.md#removemyphoto) | **DELETE** /api/v1/me/photo | Remove the signed-in user&#39;s profile photo
+[**setMyPhoto**](MeApi.md#setmyphoto) | **PUT** /api/v1/me/photo | Change the signed-in user&#39;s profile photo
 [**updateMe**](MeApi.md#updateme) | **PATCH** /api/v1/me | Change the signed-in user&#39;s own settings
 
 
@@ -134,6 +136,84 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **removeMyPhoto**
+> removeMyPhoto()
+
+Remove the signed-in user's profile photo
+
+### Example
+```dart
+import 'package:maki_api_client/api.dart';
+
+final api = MakiApiClient().getMeApi();
+
+try {
+    api.removeMyPhoto();
+} on DioException catch (e) {
+    print('Exception when calling MeApi->removeMyPhoto: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setMyPhoto**
+> setMyPhoto(setPhotoRequest)
+
+Change the signed-in user's profile photo
+
+Anyone may change their own photo. `upload_key` is a finished upload from `POST /api/v1/uploads/presign`. The worker converts it within seconds; `Me.photo_url` shows the old photo, or none, until then. 
+
+### Example
+```dart
+import 'package:maki_api_client/api.dart';
+
+final api = MakiApiClient().getMeApi();
+final SetPhotoRequest setPhotoRequest = ; // SetPhotoRequest | 
+
+try {
+    api.setMyPhoto(setPhotoRequest);
+} on DioException catch (e) {
+    print('Exception when calling MeApi->setMyPhoto: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **setPhotoRequest** | [**SetPhotoRequest**](SetPhotoRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

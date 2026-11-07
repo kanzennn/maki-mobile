@@ -339,6 +339,21 @@ today's date at the outlet, which DESIGN.md's phone layout moves off the
 sell screen. Signing out asks first while an order is being rung up; the
 device token stays for the next cashier.
 
+## Photos and live messages
+
+- **Photos:** a menu card shows the small photo with `Image.network`, and the
+  category's emoji without one, while it loads, or when it won't, as with no
+  connection. Sold out is grey either way. The cashier manages neither menus nor
+  staff, so the app uploads nothing. A cache that lasts comes with the offline
+  work.
+- **Live messages:** `features/pos/data/outlet_live.dart` follows the outlet with
+  `dart:io`'s WebSocket and a new ticket for each connection, and `_Bridges` loads
+  the catalog or the tables again when a message names them. It connects again
+  with growing waits, up to 30 seconds, and at once on close code 4000; after
+  connecting again it loads everything, as messages may have gone unheard. It
+  stops in the background and starts when the app is back. The 30-second loads
+  stay, so no connection does no harm.
+
 ## Flavors and configuration
 
 | Flavor | Application ID | App name | HTTP |

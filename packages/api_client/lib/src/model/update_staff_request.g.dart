@@ -7,6 +7,10 @@ part of 'update_staff_request.dart';
 // **************************************************************************
 
 abstract class _$UpdateStaffRequestCWProxy {
+  UpdateStaffRequest uploadKey(String? uploadKey);
+
+  UpdateStaffRequest removePhoto(bool? removePhoto);
+
   UpdateStaffRequest name(String name);
 
   UpdateStaffRequest email(String? email);
@@ -24,6 +28,8 @@ abstract class _$UpdateStaffRequestCWProxy {
   /// UpdateStaffRequest(...).copyWith(id: 12, name: "My name")
   /// ````
   UpdateStaffRequest call({
+    String? uploadKey,
+    bool? removePhoto,
     String name,
     String? email,
     String? phone,
@@ -37,6 +43,13 @@ class _$UpdateStaffRequestCWProxyImpl implements _$UpdateStaffRequestCWProxy {
   const _$UpdateStaffRequestCWProxyImpl(this._value);
 
   final UpdateStaffRequest _value;
+
+  @override
+  UpdateStaffRequest uploadKey(String? uploadKey) => this(uploadKey: uploadKey);
+
+  @override
+  UpdateStaffRequest removePhoto(bool? removePhoto) =>
+      this(removePhoto: removePhoto);
 
   @override
   UpdateStaffRequest name(String name) => this(name: name);
@@ -61,6 +74,8 @@ class _$UpdateStaffRequestCWProxyImpl implements _$UpdateStaffRequestCWProxy {
   /// UpdateStaffRequest(...).copyWith(id: 12, name: "My name")
   /// ````
   UpdateStaffRequest call({
+    Object? uploadKey = const $CopyWithPlaceholder(),
+    Object? removePhoto = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? email = const $CopyWithPlaceholder(),
     Object? phone = const $CopyWithPlaceholder(),
@@ -68,6 +83,14 @@ class _$UpdateStaffRequestCWProxyImpl implements _$UpdateStaffRequestCWProxy {
     Object? isManager = const $CopyWithPlaceholder(),
   }) {
     return UpdateStaffRequest(
+      uploadKey: uploadKey == const $CopyWithPlaceholder()
+          ? _value.uploadKey
+          // ignore: cast_nullable_to_non_nullable
+          : uploadKey as String?,
+      removePhoto: removePhoto == const $CopyWithPlaceholder()
+          ? _value.removePhoto
+          // ignore: cast_nullable_to_non_nullable
+          : removePhoto as bool?,
       name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
@@ -110,6 +133,8 @@ UpdateStaffRequest _$UpdateStaffRequestFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(json, requiredKeys: const ['name']);
         final val = UpdateStaffRequest(
+          uploadKey: $checkedConvert('upload_key', (v) => v as String?),
+          removePhoto: $checkedConvert('remove_photo', (v) => v as bool?),
           name: $checkedConvert('name', (v) => v as String),
           email: $checkedConvert('email', (v) => v as String?),
           phone: $checkedConvert('phone', (v) => v as String?),
@@ -118,11 +143,18 @@ UpdateStaffRequest _$UpdateStaffRequestFromJson(Map<String, dynamic> json) =>
         );
         return val;
       },
-      fieldKeyMap: const {'roleId': 'role_id', 'isManager': 'is_manager'},
+      fieldKeyMap: const {
+        'uploadKey': 'upload_key',
+        'removePhoto': 'remove_photo',
+        'roleId': 'role_id',
+        'isManager': 'is_manager',
+      },
     );
 
 Map<String, dynamic> _$UpdateStaffRequestToJson(UpdateStaffRequest instance) =>
     <String, dynamic>{
+      'upload_key': ?instance.uploadKey,
+      'remove_photo': ?instance.removePhoto,
       'name': instance.name,
       'email': ?instance.email,
       'phone': ?instance.phone,

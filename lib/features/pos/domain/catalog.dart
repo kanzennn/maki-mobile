@@ -88,6 +88,9 @@ abstract class CatalogMenu with _$CatalogMenu {
 
     /// What is left, when the stock is tracked.
     int? stockQty,
+
+    /// The small photo on the CDN; null shows the category's emoji.
+    String? photoUrl,
   }) = _CatalogMenu;
 }
 

@@ -38,9 +38,15 @@ void main() {
       // TODO
     });
 
-    // The photo's address, with the upload milestone; null until then.
+    // The 800 × 800 photo on the CDN; null for a menu without one.
     // String imageUrl
     test('to test the property `imageUrl`', () async {
+      // TODO
+    });
+
+    // The 200 × 200 photo on the CDN; null for a menu without one.
+    // String imageThumbUrl
+    test('to test the property `imageThumbUrl`', () async {
       // TODO
     });
 

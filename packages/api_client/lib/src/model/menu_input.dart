@@ -20,6 +20,10 @@ class MenuInput {
   /// Returns a new [MenuInput] instance.
   MenuInput({
 
+     this.uploadKey,
+
+     this.removeImage,
+
     required  this.name,
 
     required  this.categoryId,
@@ -38,6 +42,32 @@ class MenuInput {
 
      this.isActive,
   });
+
+      /// A finished upload, to become the menu's photo; the old one shows until the worker is done.
+  @JsonKey(
+    
+    name: r'upload_key',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? uploadKey;
+
+
+
+      /// On PUT, takes the photo away. `upload_key` wins if both are sent.
+  @JsonKey(
+    
+    name: r'remove_image',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? removeImage;
+
+
 
   @JsonKey(
     
@@ -162,6 +192,8 @@ class MenuInput {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is MenuInput &&
+      other.uploadKey == uploadKey &&
+      other.removeImage == removeImage &&
       other.name == name &&
       other.categoryId == categoryId &&
       other.price == price &&
@@ -174,6 +206,8 @@ class MenuInput {
 
     @override
     int get hashCode =>
+        (uploadKey == null ? 0 : uploadKey.hashCode) +
+        removeImage.hashCode +
         name.hashCode +
         categoryId.hashCode +
         price.hashCode +

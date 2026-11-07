@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the entity
 
   group(CreateStaffRequest, () {
+    // A finished upload, to become the account's photo.
+    // String uploadKey
+    test('to test the property `uploadKey`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO

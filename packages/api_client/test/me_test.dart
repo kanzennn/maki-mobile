@@ -22,6 +22,12 @@ void main() {
       // TODO
     });
 
+    // A short-lived address of the photo; null without one.
+    // String photoUrl
+    test('to test the property `photoUrl`', () async {
+      // TODO
+    });
+
     // String email
     test('to test the property `email`', () async {
       // TODO
