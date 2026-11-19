@@ -274,6 +274,7 @@ Map<String, Object?> orderJson({
       'amount': total,
       'received': received,
       'change': received == null ? null : received - total,
+      'reference': null,
       'status': status,
     },
     'client_created_at': clientCreatedAt,

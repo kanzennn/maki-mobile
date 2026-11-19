@@ -24,6 +24,8 @@ class CreateOrderPayment {
     required  this.method,
 
      this.received,
+
+     this.reference,
   });
 
   @JsonKey(
@@ -51,17 +53,32 @@ class CreateOrderPayment {
 
 
 
+      /// Debit, and only debit: the retrieval reference or approval code on the EDC machine's slip, 4 to 32 letters, digits and hyphens, in any case. Never a card's number, which is refused (`payment.reference`: `card_number`). The field's other rules are `required`, `format` and, on another method, `not_allowed`. 
+  @JsonKey(
+    
+    name: r'reference',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? reference;
+
+
+
 
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is CreateOrderPayment &&
       other.method == method &&
-      other.received == received;
+      other.received == received &&
+      other.reference == reference;
 
     @override
     int get hashCode =>
         method.hashCode +
-        (received == null ? 0 : received.hashCode);
+        (received == null ? 0 : received.hashCode) +
+        (reference == null ? 0 : reference.hashCode);
 
   factory CreateOrderPayment.fromJson(Map<String, dynamic> json) => _$CreateOrderPaymentFromJson(json);
 

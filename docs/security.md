@@ -121,6 +121,14 @@ Re-audited when the Bluetooth printer came (standard §9):
   logged.
 - **No new dependency:** the channel is the app's own Kotlin.
 
+### The EDC machine
+
+Only a frame so far ([hardware.md](./hardware.md#the-edc-machine)): no permission,
+dependency or connection was added, and debit stays off. By design the app holds
+the amount and the slip's number, never a card's number, track data or PIN, and
+refuses a number that looks like a card's. Re-audit with the first real driver,
+as a payment integration and new hardware (standard §9).
+
 ## Secrets, logs and errors
 
 - No secrets in the app: `env/<flavor>.json` holds public config

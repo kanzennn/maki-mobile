@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **amount** | **int** |  | 
 **received** | **int** |  | 
 **change** | **int** |  | 
+**reference** | **String** | Debit, the number on the EDC machine's slip, in capitals; null for the other methods. | 
 **status** | [**OrderStatus**](OrderStatus.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

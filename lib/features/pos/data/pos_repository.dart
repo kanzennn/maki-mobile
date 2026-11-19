@@ -225,6 +225,7 @@ api.CreateOrderRequest newOrderToDto(NewOrder order) => api.CreateOrderRequest(
       PaymentMethod.debit => api.PaymentMethod.debit,
     },
     received: order.received,
+    reference: order.reference,
   ),
 );
 
@@ -259,6 +260,7 @@ Order orderFromDto(api.Order dto) => Order(
     amount: dto.payment.amount,
     received: dto.payment.received,
     change: dto.payment.change,
+    reference: dto.payment.reference,
   ),
   clientCreatedAt: dto.clientCreatedAt.toUtc(),
   voidReason: dto.voidReason,

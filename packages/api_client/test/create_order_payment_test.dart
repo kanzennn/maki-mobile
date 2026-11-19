@@ -18,5 +18,11 @@ void main() {
       // TODO
     });
 
+    // Debit, and only debit: the retrieval reference or approval code on the EDC machine's slip, 4 to 32 letters, digits and hyphens, in any case. Never a card's number, which is refused (`payment.reference`: `card_number`). The field's other rules are `required`, `format` and, on another method, `not_allowed`. 
+    // String reference
+    test('to test the property `reference`', () async {
+      // TODO
+    });
+
   });
 }

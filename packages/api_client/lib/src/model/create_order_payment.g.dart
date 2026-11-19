@@ -11,13 +11,19 @@ abstract class _$CreateOrderPaymentCWProxy {
 
   CreateOrderPayment received(int? received);
 
+  CreateOrderPayment reference(String? reference);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CreateOrderPayment(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
   /// CreateOrderPayment(...).copyWith(id: 12, name: "My name")
   /// ````
-  CreateOrderPayment call({PaymentMethod method, int? received});
+  CreateOrderPayment call({
+    PaymentMethod method,
+    int? received,
+    String? reference,
+  });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCreateOrderPayment.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCreateOrderPayment.copyWith.fieldName(...)`
@@ -33,6 +39,9 @@ class _$CreateOrderPaymentCWProxyImpl implements _$CreateOrderPaymentCWProxy {
   CreateOrderPayment received(int? received) => this(received: received);
 
   @override
+  CreateOrderPayment reference(String? reference) => this(reference: reference);
+
+  @override
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CreateOrderPayment(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -42,6 +51,7 @@ class _$CreateOrderPaymentCWProxyImpl implements _$CreateOrderPaymentCWProxy {
   CreateOrderPayment call({
     Object? method = const $CopyWithPlaceholder(),
     Object? received = const $CopyWithPlaceholder(),
+    Object? reference = const $CopyWithPlaceholder(),
   }) {
     return CreateOrderPayment(
       method: method == const $CopyWithPlaceholder()
@@ -52,6 +62,10 @@ class _$CreateOrderPaymentCWProxyImpl implements _$CreateOrderPaymentCWProxy {
           ? _value.received
           // ignore: cast_nullable_to_non_nullable
           : received as int?,
+      reference: reference == const $CopyWithPlaceholder()
+          ? _value.reference
+          // ignore: cast_nullable_to_non_nullable
+          : reference as String?,
     );
   }
 }
@@ -76,6 +90,7 @@ CreateOrderPayment _$CreateOrderPaymentFromJson(Map<String, dynamic> json) =>
           (v) => $enumDecode(_$PaymentMethodEnumMap, v),
         ),
         received: $checkedConvert('received', (v) => (v as num?)?.toInt()),
+        reference: $checkedConvert('reference', (v) => v as String?),
       );
       return val;
     });
@@ -84,6 +99,7 @@ Map<String, dynamic> _$CreateOrderPaymentToJson(CreateOrderPayment instance) =>
     <String, dynamic>{
       'method': _$PaymentMethodEnumMap[instance.method]!,
       'received': ?instance.received,
+      'reference': ?instance.reference,
     };
 
 const _$PaymentMethodEnumMap = {

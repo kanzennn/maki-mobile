@@ -666,7 +666,8 @@ mixin _$OrderPayment {
 
  PaymentMethod get method;/// What was charged: the order's total.
  int get amount;/// Cash: what the customer handed over, and what went back.
- int? get received; int? get change;
+ int? get received; int? get change;/// Debit: the number on the EDC machine's slip.
+ String? get reference;
 /// Create a copy of OrderPayment
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -678,20 +679,20 @@ $OrderPaymentCopyWith<OrderPayment> get copyWith => _$OrderPaymentCopyWithImpl<O
 @override
 bool operator ==(Object other) {
   final _this = this as OrderPayment;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderPayment&&(identical(other.method, _this.method) || other.method == _this.method)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.received, _this.received) || other.received == _this.received)&&(identical(other.change, _this.change) || other.change == _this.change));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderPayment&&(identical(other.method, _this.method) || other.method == _this.method)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.received, _this.received) || other.received == _this.received)&&(identical(other.change, _this.change) || other.change == _this.change)&&(identical(other.reference, _this.reference) || other.reference == _this.reference));
 }
 
 
 @override
 int get hashCode {
   final _this = this as OrderPayment;
-  return Object.hash(runtimeType,_this.method,_this.amount,_this.received,_this.change);
+  return Object.hash(runtimeType,_this.method,_this.amount,_this.received,_this.change,_this.reference);
 }
 
 @override
 String toString() {
   final _this = this as OrderPayment;
-  return 'OrderPayment(method: ${_this.method}, amount: ${_this.amount}, received: ${_this.received}, change: ${_this.change})';
+  return 'OrderPayment(method: ${_this.method}, amount: ${_this.amount}, received: ${_this.received}, change: ${_this.change}, reference: ${_this.reference})';
 }
 
 
@@ -702,7 +703,7 @@ abstract mixin class $OrderPaymentCopyWith<$Res>  {
   factory $OrderPaymentCopyWith(OrderPayment value, $Res Function(OrderPayment) _then) = _$OrderPaymentCopyWithImpl;
 @useResult
 $Res call({
- PaymentMethod method, int amount, int? received, int? change
+ PaymentMethod method, int amount, int? received, int? change, String? reference
 });
 
 
@@ -719,13 +720,14 @@ class _$OrderPaymentCopyWithImpl<$Res>
 
 /// Create a copy of OrderPayment
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? method = null,Object? amount = null,Object? received = freezed,Object? change = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? method = null,Object? amount = null,Object? received = freezed,Object? change = freezed,Object? reference = freezed,}) {
   return _then(OrderPayment(
 method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
 as PaymentMethod,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as int,received: freezed == received ? _self.received : received // ignore: cast_nullable_to_non_nullable
 as int?,change: freezed == change ? _self.change : change // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,reference: freezed == reference ? _self.reference : reference // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -810,10 +812,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentMethod method,  int amount,  int? received,  int? change)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PaymentMethod method,  int amount,  int? received,  int? change,  String? reference)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OrderPayment() when $default != null:
-return $default(_that.method,_that.amount,_that.received,_that.change);case _:
+return $default(_that.method,_that.amount,_that.received,_that.change,_that.reference);case _:
   return orElse();
 
 }
@@ -831,10 +833,10 @@ return $default(_that.method,_that.amount,_that.received,_that.change);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentMethod method,  int amount,  int? received,  int? change)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PaymentMethod method,  int amount,  int? received,  int? change,  String? reference)  $default,) {final _that = this;
 switch (_that) {
 case _OrderPayment():
-return $default(_that.method,_that.amount,_that.received,_that.change);case _:
+return $default(_that.method,_that.amount,_that.received,_that.change,_that.reference);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -851,10 +853,10 @@ return $default(_that.method,_that.amount,_that.received,_that.change);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentMethod method,  int amount,  int? received,  int? change)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PaymentMethod method,  int amount,  int? received,  int? change,  String? reference)?  $default,) {final _that = this;
 switch (_that) {
 case _OrderPayment() when $default != null:
-return $default(_that.method,_that.amount,_that.received,_that.change);case _:
+return $default(_that.method,_that.amount,_that.received,_that.change,_that.reference);case _:
   return null;
 
 }
@@ -866,7 +868,7 @@ return $default(_that.method,_that.amount,_that.received,_that.change);case _:
 
 
 class _OrderPayment implements OrderPayment {
-  const _OrderPayment({required this.method, required this.amount, this.received, this.change});
+  const _OrderPayment({required this.method, required this.amount, this.received, this.change, this.reference});
   
 
 @override final  PaymentMethod method;
@@ -875,6 +877,8 @@ class _OrderPayment implements OrderPayment {
 /// Cash: what the customer handed over, and what went back.
 @override final  int? received;
 @override final  int? change;
+/// Debit: the number on the EDC machine's slip.
+@override final  String? reference;
 
 /// Create a copy of OrderPayment
 /// with the given fields replaced by the non-null parameter values.
@@ -886,18 +890,18 @@ _$OrderPaymentCopyWith<_OrderPayment> get copyWith => __$OrderPaymentCopyWithImp
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderPayment&&(identical(other.method, method) || other.method == method)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.received, received) || other.received == received)&&(identical(other.change, change) || other.change == change));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderPayment&&(identical(other.method, method) || other.method == method)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.received, received) || other.received == received)&&(identical(other.change, change) || other.change == change)&&(identical(other.reference, reference) || other.reference == reference));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,method,amount,received,change);
+    return Object.hash(runtimeType,method,amount,received,change,reference);
 }
 
 @override
 String toString() {
-    return 'OrderPayment(method: $method, amount: $amount, received: $received, change: $change)';
+    return 'OrderPayment(method: $method, amount: $amount, received: $received, change: $change, reference: $reference)';
 }
 
 
@@ -908,7 +912,7 @@ abstract mixin class _$OrderPaymentCopyWith<$Res> implements $OrderPaymentCopyWi
   factory _$OrderPaymentCopyWith(_OrderPayment value, $Res Function(_OrderPayment) _then) = __$OrderPaymentCopyWithImpl;
 @override @useResult
 $Res call({
- PaymentMethod method, int amount, int? received, int? change
+ PaymentMethod method, int amount, int? received, int? change, String? reference
 });
 
 
@@ -925,13 +929,14 @@ class __$OrderPaymentCopyWithImpl<$Res>
 
 /// Create a copy of OrderPayment
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? method = null,Object? amount = null,Object? received = freezed,Object? change = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? method = null,Object? amount = null,Object? received = freezed,Object? change = freezed,Object? reference = freezed,}) {
   return _then(_OrderPayment(
 method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
 as PaymentMethod,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as int,received: freezed == received ? _self.received : received // ignore: cast_nullable_to_non_nullable
 as int?,change: freezed == change ? _self.change : change // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,reference: freezed == reference ? _self.reference : reference // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -1243,7 +1248,8 @@ mixin _$NewOrder {
  DateTime get clientCreatedAt; List<NewOrderLine> get lines;/// The total the cashier showed: the server refuses it if its own
 /// differs.
  int get total; PaymentMethod get method;/// Cash handed over.
- int? get received;/// The voucher the customer gave, one per order; null for none.
+ int? get received;/// Debit: the number on the EDC machine's slip, as the server keeps it.
+ String? get reference;/// The voucher the customer gave, one per order; null for none.
  String? get voucherCode;/// The table of a dine-in order, if the cashier picked one; null for
 /// none.
  String? get tableId;/// The number on the dine-in customer's stand, as the server keeps it,
@@ -1260,20 +1266,20 @@ $NewOrderCopyWith<NewOrder> get copyWith => _$NewOrderCopyWithImpl<NewOrder>(thi
 @override
 bool operator ==(Object other) {
   final _this = this as NewOrder;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewOrder&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.orderNo, _this.orderNo) || other.orderNo == _this.orderNo)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.clientCreatedAt, _this.clientCreatedAt) || other.clientCreatedAt == _this.clientCreatedAt)&&const DeepCollectionEquality().equals(other.lines, _this.lines)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.method, _this.method) || other.method == _this.method)&&(identical(other.received, _this.received) || other.received == _this.received)&&(identical(other.voucherCode, _this.voucherCode) || other.voucherCode == _this.voucherCode)&&(identical(other.tableId, _this.tableId) || other.tableId == _this.tableId)&&(identical(other.standNumber, _this.standNumber) || other.standNumber == _this.standNumber));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewOrder&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.orderNo, _this.orderNo) || other.orderNo == _this.orderNo)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.clientCreatedAt, _this.clientCreatedAt) || other.clientCreatedAt == _this.clientCreatedAt)&&const DeepCollectionEquality().equals(other.lines, _this.lines)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.method, _this.method) || other.method == _this.method)&&(identical(other.received, _this.received) || other.received == _this.received)&&(identical(other.reference, _this.reference) || other.reference == _this.reference)&&(identical(other.voucherCode, _this.voucherCode) || other.voucherCode == _this.voucherCode)&&(identical(other.tableId, _this.tableId) || other.tableId == _this.tableId)&&(identical(other.standNumber, _this.standNumber) || other.standNumber == _this.standNumber));
 }
 
 
 @override
 int get hashCode {
   final _this = this as NewOrder;
-  return Object.hash(runtimeType,_this.orderId,_this.orderNo,_this.type,_this.clientCreatedAt,const DeepCollectionEquality().hash(_this.lines),_this.total,_this.method,_this.received,_this.voucherCode,_this.tableId,_this.standNumber);
+  return Object.hash(runtimeType,_this.orderId,_this.orderNo,_this.type,_this.clientCreatedAt,const DeepCollectionEquality().hash(_this.lines),_this.total,_this.method,_this.received,_this.reference,_this.voucherCode,_this.tableId,_this.standNumber);
 }
 
 @override
 String toString() {
   final _this = this as NewOrder;
-  return 'NewOrder(orderId: ${_this.orderId}, orderNo: ${_this.orderNo}, type: ${_this.type}, clientCreatedAt: ${_this.clientCreatedAt}, lines: ${_this.lines}, total: ${_this.total}, method: ${_this.method}, received: ${_this.received}, voucherCode: ${_this.voucherCode}, tableId: ${_this.tableId}, standNumber: ${_this.standNumber})';
+  return 'NewOrder(orderId: ${_this.orderId}, orderNo: ${_this.orderNo}, type: ${_this.type}, clientCreatedAt: ${_this.clientCreatedAt}, lines: ${_this.lines}, total: ${_this.total}, method: ${_this.method}, received: ${_this.received}, reference: ${_this.reference}, voucherCode: ${_this.voucherCode}, tableId: ${_this.tableId}, standNumber: ${_this.standNumber})';
 }
 
 
@@ -1284,7 +1290,7 @@ abstract mixin class $NewOrderCopyWith<$Res>  {
   factory $NewOrderCopyWith(NewOrder value, $Res Function(NewOrder) _then) = _$NewOrderCopyWithImpl;
 @useResult
 $Res call({
- String orderId, String orderNo, OrderType type, DateTime clientCreatedAt, List<NewOrderLine> lines, int total, PaymentMethod method, int? received, String? voucherCode, String? tableId, String? standNumber
+ String orderId, String orderNo, OrderType type, DateTime clientCreatedAt, List<NewOrderLine> lines, int total, PaymentMethod method, int? received, String? reference, String? voucherCode, String? tableId, String? standNumber
 });
 
 
@@ -1301,7 +1307,7 @@ class _$NewOrderCopyWithImpl<$Res>
 
 /// Create a copy of NewOrder
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? orderId = null,Object? orderNo = null,Object? type = null,Object? clientCreatedAt = null,Object? lines = null,Object? total = null,Object? method = null,Object? received = freezed,Object? voucherCode = freezed,Object? tableId = freezed,Object? standNumber = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? orderId = null,Object? orderNo = null,Object? type = null,Object? clientCreatedAt = null,Object? lines = null,Object? total = null,Object? method = null,Object? received = freezed,Object? reference = freezed,Object? voucherCode = freezed,Object? tableId = freezed,Object? standNumber = freezed,}) {
   return _then(NewOrder(
 orderId: null == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
 as String,orderNo: null == orderNo ? _self.orderNo : orderNo // ignore: cast_nullable_to_non_nullable
@@ -1311,7 +1317,8 @@ as DateTime,lines: null == lines ? _self.lines : lines // ignore: cast_nullable_
 as List<NewOrderLine>,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
 as int,method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
 as PaymentMethod,received: freezed == received ? _self.received : received // ignore: cast_nullable_to_non_nullable
-as int?,voucherCode: freezed == voucherCode ? _self.voucherCode : voucherCode // ignore: cast_nullable_to_non_nullable
+as int?,reference: freezed == reference ? _self.reference : reference // ignore: cast_nullable_to_non_nullable
+as String?,voucherCode: freezed == voucherCode ? _self.voucherCode : voucherCode // ignore: cast_nullable_to_non_nullable
 as String?,tableId: freezed == tableId ? _self.tableId : tableId // ignore: cast_nullable_to_non_nullable
 as String?,standNumber: freezed == standNumber ? _self.standNumber : standNumber // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -1399,10 +1406,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? voucherCode,  String? tableId,  String? standNumber)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? reference,  String? voucherCode,  String? tableId,  String? standNumber)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewOrder() when $default != null:
-return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.voucherCode,_that.tableId,_that.standNumber);case _:
+return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.reference,_that.voucherCode,_that.tableId,_that.standNumber);case _:
   return orElse();
 
 }
@@ -1420,10 +1427,10 @@ return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? voucherCode,  String? tableId,  String? standNumber)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? reference,  String? voucherCode,  String? tableId,  String? standNumber)  $default,) {final _that = this;
 switch (_that) {
 case _NewOrder():
-return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.voucherCode,_that.tableId,_that.standNumber);case _:
+return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.reference,_that.voucherCode,_that.tableId,_that.standNumber);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1440,10 +1447,10 @@ return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? voucherCode,  String? tableId,  String? standNumber)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String orderId,  String orderNo,  OrderType type,  DateTime clientCreatedAt,  List<NewOrderLine> lines,  int total,  PaymentMethod method,  int? received,  String? reference,  String? voucherCode,  String? tableId,  String? standNumber)?  $default,) {final _that = this;
 switch (_that) {
 case _NewOrder() when $default != null:
-return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.voucherCode,_that.tableId,_that.standNumber);case _:
+return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_that.lines,_that.total,_that.method,_that.received,_that.reference,_that.voucherCode,_that.tableId,_that.standNumber);case _:
   return null;
 
 }
@@ -1455,7 +1462,7 @@ return $default(_that.orderId,_that.orderNo,_that.type,_that.clientCreatedAt,_th
 
 
 class _NewOrder implements NewOrder {
-  const _NewOrder({required this.orderId, required this.orderNo, required this.type, required this.clientCreatedAt, required  List<NewOrderLine> lines, required this.total, required this.method, this.received, this.voucherCode, this.tableId, this.standNumber}): _lines = lines;
+  const _NewOrder({required this.orderId, required this.orderNo, required this.type, required this.clientCreatedAt, required  List<NewOrderLine> lines, required this.total, required this.method, this.received, this.reference, this.voucherCode, this.tableId, this.standNumber}): _lines = lines;
   
 
 @override final  String orderId;
@@ -1476,6 +1483,8 @@ class _NewOrder implements NewOrder {
 @override final  PaymentMethod method;
 /// Cash handed over.
 @override final  int? received;
+/// Debit: the number on the EDC machine's slip, as the server keeps it.
+@override final  String? reference;
 /// The voucher the customer gave, one per order; null for none.
 @override final  String? voucherCode;
 /// The table of a dine-in order, if the cashier picked one; null for
@@ -1495,18 +1504,18 @@ _$NewOrderCopyWith<_NewOrder> get copyWith => __$NewOrderCopyWithImpl<_NewOrder>
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewOrder&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderNo, orderNo) || other.orderNo == orderNo)&&(identical(other.type, type) || other.type == type)&&(identical(other.clientCreatedAt, clientCreatedAt) || other.clientCreatedAt == clientCreatedAt)&&const DeepCollectionEquality().equals(other.lines, _lines)&&(identical(other.total, total) || other.total == total)&&(identical(other.method, method) || other.method == method)&&(identical(other.received, received) || other.received == received)&&(identical(other.voucherCode, voucherCode) || other.voucherCode == voucherCode)&&(identical(other.tableId, tableId) || other.tableId == tableId)&&(identical(other.standNumber, standNumber) || other.standNumber == standNumber));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewOrder&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderNo, orderNo) || other.orderNo == orderNo)&&(identical(other.type, type) || other.type == type)&&(identical(other.clientCreatedAt, clientCreatedAt) || other.clientCreatedAt == clientCreatedAt)&&const DeepCollectionEquality().equals(other.lines, _lines)&&(identical(other.total, total) || other.total == total)&&(identical(other.method, method) || other.method == method)&&(identical(other.received, received) || other.received == received)&&(identical(other.reference, reference) || other.reference == reference)&&(identical(other.voucherCode, voucherCode) || other.voucherCode == voucherCode)&&(identical(other.tableId, tableId) || other.tableId == tableId)&&(identical(other.standNumber, standNumber) || other.standNumber == standNumber));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,orderId,orderNo,type,clientCreatedAt,const DeepCollectionEquality().hash(_lines),total,method,received,voucherCode,tableId,standNumber);
+    return Object.hash(runtimeType,orderId,orderNo,type,clientCreatedAt,const DeepCollectionEquality().hash(_lines),total,method,received,reference,voucherCode,tableId,standNumber);
 }
 
 @override
 String toString() {
-    return 'NewOrder(orderId: $orderId, orderNo: $orderNo, type: $type, clientCreatedAt: $clientCreatedAt, lines: $lines, total: $total, method: $method, received: $received, voucherCode: $voucherCode, tableId: $tableId, standNumber: $standNumber)';
+    return 'NewOrder(orderId: $orderId, orderNo: $orderNo, type: $type, clientCreatedAt: $clientCreatedAt, lines: $lines, total: $total, method: $method, received: $received, reference: $reference, voucherCode: $voucherCode, tableId: $tableId, standNumber: $standNumber)';
 }
 
 
@@ -1517,7 +1526,7 @@ abstract mixin class _$NewOrderCopyWith<$Res> implements $NewOrderCopyWith<$Res>
   factory _$NewOrderCopyWith(_NewOrder value, $Res Function(_NewOrder) _then) = __$NewOrderCopyWithImpl;
 @override @useResult
 $Res call({
- String orderId, String orderNo, OrderType type, DateTime clientCreatedAt, List<NewOrderLine> lines, int total, PaymentMethod method, int? received, String? voucherCode, String? tableId, String? standNumber
+ String orderId, String orderNo, OrderType type, DateTime clientCreatedAt, List<NewOrderLine> lines, int total, PaymentMethod method, int? received, String? reference, String? voucherCode, String? tableId, String? standNumber
 });
 
 
@@ -1534,7 +1543,7 @@ class __$NewOrderCopyWithImpl<$Res>
 
 /// Create a copy of NewOrder
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? orderId = null,Object? orderNo = null,Object? type = null,Object? clientCreatedAt = null,Object? lines = null,Object? total = null,Object? method = null,Object? received = freezed,Object? voucherCode = freezed,Object? tableId = freezed,Object? standNumber = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? orderId = null,Object? orderNo = null,Object? type = null,Object? clientCreatedAt = null,Object? lines = null,Object? total = null,Object? method = null,Object? received = freezed,Object? reference = freezed,Object? voucherCode = freezed,Object? tableId = freezed,Object? standNumber = freezed,}) {
   return _then(_NewOrder(
 orderId: null == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
 as String,orderNo: null == orderNo ? _self.orderNo : orderNo // ignore: cast_nullable_to_non_nullable
@@ -1544,7 +1553,8 @@ as DateTime,lines: null == lines ? _self._lines : lines // ignore: cast_nullable
 as List<NewOrderLine>,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
 as int,method: null == method ? _self.method : method // ignore: cast_nullable_to_non_nullable
 as PaymentMethod,received: freezed == received ? _self.received : received // ignore: cast_nullable_to_non_nullable
-as int?,voucherCode: freezed == voucherCode ? _self.voucherCode : voucherCode // ignore: cast_nullable_to_non_nullable
+as int?,reference: freezed == reference ? _self.reference : reference // ignore: cast_nullable_to_non_nullable
+as String?,voucherCode: freezed == voucherCode ? _self.voucherCode : voucherCode // ignore: cast_nullable_to_non_nullable
 as String?,tableId: freezed == tableId ? _self.tableId : tableId // ignore: cast_nullable_to_non_nullable
 as String?,standNumber: freezed == standNumber ? _self.standNumber : standNumber // ignore: cast_nullable_to_non_nullable
 as String?,

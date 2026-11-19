@@ -30,6 +30,8 @@ class OrderPayment {
 
     required  this.change,
 
+    required  this.reference,
+
     required  this.status,
   });
 
@@ -81,6 +83,19 @@ class OrderPayment {
 
 
 
+      /// Debit, the number on the EDC machine's slip, in capitals; null for the other methods.
+  @JsonKey(
+    
+    name: r'reference',
+    required: true,
+    includeIfNull: true,
+  )
+
+
+  final String? reference;
+
+
+
   @JsonKey(
     
     name: r'status',
@@ -101,6 +116,7 @@ class OrderPayment {
       other.amount == amount &&
       other.received == received &&
       other.change == change &&
+      other.reference == reference &&
       other.status == status;
 
     @override
@@ -109,6 +125,7 @@ class OrderPayment {
         amount.hashCode +
         (received == null ? 0 : received.hashCode) +
         (change == null ? 0 : change.hashCode) +
+        (reference == null ? 0 : reference.hashCode) +
         status.hashCode;
 
   factory OrderPayment.fromJson(Map<String, dynamic> json) => _$OrderPaymentFromJson(json);

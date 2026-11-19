@@ -15,6 +15,8 @@ abstract class _$OrderPaymentCWProxy {
 
   OrderPayment change(int? change);
 
+  OrderPayment reference(String? reference);
+
   OrderPayment status(OrderStatus status);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `OrderPayment(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -28,6 +30,7 @@ abstract class _$OrderPaymentCWProxy {
     int amount,
     int? received,
     int? change,
+    String? reference,
     OrderStatus status,
   });
 }
@@ -51,6 +54,9 @@ class _$OrderPaymentCWProxyImpl implements _$OrderPaymentCWProxy {
   OrderPayment change(int? change) => this(change: change);
 
   @override
+  OrderPayment reference(String? reference) => this(reference: reference);
+
+  @override
   OrderPayment status(OrderStatus status) => this(status: status);
 
   @override
@@ -65,6 +71,7 @@ class _$OrderPaymentCWProxyImpl implements _$OrderPaymentCWProxy {
     Object? amount = const $CopyWithPlaceholder(),
     Object? received = const $CopyWithPlaceholder(),
     Object? change = const $CopyWithPlaceholder(),
+    Object? reference = const $CopyWithPlaceholder(),
     Object? status = const $CopyWithPlaceholder(),
   }) {
     return OrderPayment(
@@ -84,6 +91,10 @@ class _$OrderPaymentCWProxyImpl implements _$OrderPaymentCWProxy {
           ? _value.change
           // ignore: cast_nullable_to_non_nullable
           : change as int?,
+      reference: reference == const $CopyWithPlaceholder()
+          ? _value.reference
+          // ignore: cast_nullable_to_non_nullable
+          : reference as String?,
       status: status == const $CopyWithPlaceholder()
           ? _value.status
           // ignore: cast_nullable_to_non_nullable
@@ -111,6 +122,7 @@ OrderPayment _$OrderPaymentFromJson(Map<String, dynamic> json) =>
           'amount',
           'received',
           'change',
+          'reference',
           'status',
         ],
       );
@@ -122,6 +134,7 @@ OrderPayment _$OrderPaymentFromJson(Map<String, dynamic> json) =>
         amount: $checkedConvert('amount', (v) => (v as num).toInt()),
         received: $checkedConvert('received', (v) => (v as num?)?.toInt()),
         change: $checkedConvert('change', (v) => (v as num?)?.toInt()),
+        reference: $checkedConvert('reference', (v) => v as String?),
         status: $checkedConvert(
           'status',
           (v) => $enumDecode(_$OrderStatusEnumMap, v),
@@ -136,6 +149,7 @@ Map<String, dynamic> _$OrderPaymentToJson(OrderPayment instance) =>
       'amount': instance.amount,
       'received': instance.received,
       'change': instance.change,
+      'reference': instance.reference,
       'status': _$OrderStatusEnumMap[instance.status]!,
     };
 

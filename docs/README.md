@@ -7,7 +7,7 @@
 | [deployment.md](./deployment.md) | Flavors, building, versioning, the pipeline, and what a first release still needs (signing, distribution) |
 | [security.md](./security.md) | Token storage, the cashier device, backups, local database decision, transport, who the app is for, Android permissions, what isn't built yet, checks done |
 
-| [hardware.md](./hardware.md) | The Bluetooth receipt printer: using it, what it supports, what to check on a first printer |
+| [hardware.md](./hardware.md) | The Bluetooth receipt printer: using it, what it supports, what to check on a first printer. The frame for an EDC machine: its rules, and how to add a driver |
 
 `offline.md` is added when there is something project-specific to put in it.
 The design source

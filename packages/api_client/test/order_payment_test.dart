@@ -27,6 +27,12 @@ void main() {
       // TODO
     });
 
+    // Debit, the number on the EDC machine's slip, in capitals; null for the other methods.
+    // String reference
+    test('to test the property `reference`', () async {
+      // TODO
+    });
+
     // OrderStatus status
     test('to test the property `status`', () async {
       // TODO

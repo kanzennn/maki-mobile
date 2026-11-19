@@ -47,22 +47,25 @@ priced(List<CartLine> cart, Catalog catalog, {Voucher? voucher}) {
   );
 }
 
-/// The order for the cart, charged in cash at [at]: a new ID, and the
-/// device's next receipt number of the outlet's day then. A dine-in order
-/// may be for a table, or carry its stand's number.
+/// The order for the cart, charged at [at]: a new ID, and the device's next
+/// receipt number of the outlet's day then. It is in cash with what was
+/// [received], or by debit with the [reference] on the EDC machine's slip. A
+/// dine-in order may be for a table, or carry its stand's number.
 NewOrder makeOrder({
   required OrderType type,
   required List<NewOrderLine> lines,
   required int total,
-  required int received,
   required TillDevice device,
   required DateTime at,
   required String timeZone,
+  int? received,
+  String? reference,
   String? voucherCode,
   String? tableId,
   String? standNumber,
   String Function() newId = newOrderId,
 }) {
+  assert((received == null) != (reference == null), 'one way to pay');
   final order = NewOrder(
     orderId: newId(),
     orderNo: '',
@@ -75,8 +78,9 @@ NewOrder makeOrder({
     ),
     lines: lines,
     total: total,
-    method: PaymentMethod.cash,
+    method: reference == null ? PaymentMethod.cash : PaymentMethod.debit,
     received: received,
+    reference: reference,
     voucherCode: voucherCode,
     tableId: tableId,
     standNumber: standNumber,

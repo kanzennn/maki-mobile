@@ -24,6 +24,24 @@ void main() {
     newId: () => 'ord1',
   );
 
+  test('makeOrder takes a debit by the number on its slip', () {
+    final debit = makeOrder(
+      type: OrderType.takeaway,
+      lines: lines,
+      total: 41580,
+      reference: 'AB-1234',
+      device: testTill(),
+      at: DateTime.utc(2026, 10, 1, 3),
+      timeZone: 'Asia/Jakarta',
+      newId: () => 'ord1',
+    );
+    expect(debit.method, PaymentMethod.debit);
+    expect(debit.reference, 'AB-1234');
+    expect(debit.received, isNull);
+    expect(order().method, PaymentMethod.cash);
+    expect(order().reference, isNull);
+  });
+
   group('priced', () {
     test("prices the cart at the catalog's prices and the outlet's rates", () {
       final result = priced([

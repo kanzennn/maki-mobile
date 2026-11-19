@@ -76,6 +76,9 @@ abstract class OrderPayment with _$OrderPayment {
     /// Cash: what the customer handed over, and what went back.
     int? received,
     int? change,
+
+    /// Debit: the number on the EDC machine's slip.
+    String? reference,
   }) = _OrderPayment;
 }
 
@@ -124,6 +127,9 @@ abstract class NewOrder with _$NewOrder {
 
     /// Cash handed over.
     int? received,
+
+    /// Debit: the number on the EDC machine's slip, as the server keeps it.
+    String? reference,
 
     /// The voucher the customer gave, one per order; null for none.
     String? voucherCode,
